@@ -1,153 +1,154 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { FaMoon, FaSun } from 'react-icons/fa';
+import { FaBars, FaTimes } from 'react-icons/fa';
 
 const NavbarContainer = styled.nav`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 64px;
-  background: ${({ theme }) => theme.colors.primary};
+  right: 0;
+  height: 70px;
+  background-color: ${({ theme }) => theme.colors.background};
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 0 ${({ theme }) => theme.spacing.xl};
-  box-shadow: ${({ theme }) => theme.shadows.small};
+  align-items: center;
+  padding: 0 ${({ theme }) => theme.spacing.lg};
   z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  @media (max-width: 768px) {
+    height: 60px;
+    padding: 0 ${({ theme }) => theme.spacing.md};
+  }
 `;
 
 const Logo = styled(Link)`
-  display: flex;
-  align-items: center;
-  font-size: 1.5rem;
-  font-weight: bold;
   color: ${({ theme }) => theme.colors.text};
   text-decoration: none;
-  gap: ${({ theme }) => theme.spacing.sm};
-  cursor: pointer;
-  outline: none;
-  &:focus, &:active {
-    outline: none;
-    box-shadow: none;
+  font-size: 1.5rem;
+  font-weight: 600;
+  transition: color 0.2s;
+  &:hover {
+    color: ${({ theme }) => theme.colors.secondary};
+  }
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
   }
 `;
 
-const NavLinks = styled.div`
+const NavLinks = styled.div<{ isOpen: boolean }>`
   display: flex;
-  align-items: center;
   gap: ${({ theme }) => theme.spacing.lg};
+  align-items: center;
+  @media (max-width: 768px) {
+    position: fixed;
+    top: 60px;
+    right: ${props => (props.isOpen ? '0' : '-100%')};
+    flex-direction: column;
+    background-color: ${({ theme }) => theme.colors.background};
+    width: 100%;
+    height: calc(100vh - 60px);
+    padding: ${({ theme }) => theme.spacing.lg};
+    gap: ${({ theme }) => theme.spacing.xl};
+    transition: right 0.3s ease-in-out;
+    box-shadow: -2px 0 4px rgba(0,0,0,0.1);
+  }
 `;
 
 const NavAnchor = styled.a`
-  background: none;
-  border: none;
   color: ${({ theme }) => theme.colors.text};
-  font-size: 1rem;
-  cursor: pointer;
-  padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
-  border-radius: 4px;
   text-decoration: none;
-  outline: none;
-  transition: background ${({ theme }) => theme.transitions.default};
-  &:hover, &:active {
-    #background: ${({ theme }) => theme.colors.hover};
-    color: ${({ theme }) => theme.colors.text};
-    outline: none;
-    box-shadow: none;
+  font-weight: 500;
+  transition: color 0.2s;
+  &:hover {
+    color: ${({ theme }) => theme.colors.secondary};
   }
-  &:focus {
-    outline: none;
-    box-shadow: none;
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    padding: ${({ theme }) => theme.spacing.sm} 0;
   }
 `;
 
 const StyledLink = styled(Link)`
   color: ${({ theme }) => theme.colors.text};
-  font-size: 1rem;
   text-decoration: none;
-  padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
-  border-radius: 4px;
-  outline: none;
-  transition: background ${({ theme }) => theme.transitions.default};
-  &:hover, &:active {
-    #background: ${({ theme }) => theme.colors.hover};
-    color: ${({ theme }) => theme.colors.text};
-    outline: none;
-    box-shadow: none;
+  font-weight: 500;
+  transition: color 0.2s;
+  &:hover {
+    color: ${({ theme }) => theme.colors.secondary};
   }
-  &:focus {
-    outline: none;
-    box-shadow: none;
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    padding: ${({ theme }) => theme.spacing.sm} 0;
   }
 `;
 
-const ThemeToggle = styled.button`
+const MenuButton = styled.button`
+  display: none;
   background: none;
   border: none;
   color: ${({ theme }) => theme.colors.text};
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   cursor: pointer;
-  margin-left: ${({ theme }) => theme.spacing.lg};
-  outline: none;
-  &:focus, &:active {
-    outline: none;
-    box-shadow: none;
+  padding: 0.5rem;
+  transition: color 0.2s;
+  &:hover {
+    color: ${({ theme }) => theme.colors.secondary};
+  }
+  @media (max-width: 768px) {
+    display: block;
   }
 `;
 
-const Navbar = ({ isDarkMode, toggleTheme }: { isDarkMode: boolean; toggleTheme: () => void }) => {
+const Navbar: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, section: string) => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
+    setIsMenuOpen(false);
     if (location.pathname !== '/') {
-      navigate('/', { state: { scrollTo: section } });
+      window.location.href = `/#${id}`;
     } else {
-      const el = document.getElementById(section);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-        if (window.history.pushState) {
-          window.history.pushState(null, '', `#${section}`);
-        } else {
-          window.location.hash = `#${section}`;
-        }
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
       }
     }
   };
 
   const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    if (location.pathname !== '/') {
-      navigate('/', { state: { scrollTo: 'top' } });
+    if (location.pathname === '/gallery') {
+      e.preventDefault();
+      window.location.href = '/';
+    } else if (location.pathname !== '/') {
+      e.preventDefault();
+      window.location.reload();
     } else {
+      e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (window.history.pushState) {
-        window.history.pushState(null, '', '/');
-      } else {
-        window.location.hash = '';
-      }
     }
   };
 
   return (
     <NavbarContainer>
       <Logo to="/" onClick={handleLogoClick}>Jane Choi :)</Logo>
-      <NavLinks>
+      <MenuButton onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        {isMenuOpen ? <FaTimes /> : <FaBars />}
+      </MenuButton>
+      <NavLinks isOpen={isMenuOpen}>
         <NavAnchor href="#about" onClick={e => handleNavClick(e, 'about')}>About Me</NavAnchor>
         <NavAnchor href="#experience" onClick={e => handleNavClick(e, 'experience')}>Experience</NavAnchor>
         <NavAnchor href="#education" onClick={e => handleNavClick(e, 'education')}>Education</NavAnchor>
         <NavAnchor href="#projects" onClick={e => handleNavClick(e, 'projects')}>Projects</NavAnchor>
         <NavAnchor href="#achievements" onClick={e => handleNavClick(e, 'achievements')}>Achievements</NavAnchor>
         <StyledLink to="/gallery">Gallery</StyledLink>
-        {/* <ThemeToggle onClick={toggleTheme} aria-label="Toggle dark mode">
-          {isDarkMode ? <FaSun /> : <FaMoon />}
-        </ThemeToggle> */}
       </NavLinks>
     </NavbarContainer>
   );
 };
 
-export default Navbar; 
+export default Navbar;

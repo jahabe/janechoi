@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
-import { theme } from './styles/theme';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
+import { theme } from './styles/theme.ts';
+import Navbar from './components/Navbar.tsx';
+import Hero from './components/Hero.tsx'; 
 import styled from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
@@ -52,6 +52,13 @@ const SectionTitle = styled.h2`
   color: ${({ theme }) => theme.colors.text};
   margin-bottom: ${({ theme }) => theme.spacing.xl};
   text-align: center;
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: ${({ theme }) => theme.spacing.lg};
+  }
+  @media (max-width: 480px) {
+    font-size: 1.75rem;
+  }
 `;
 
 const ContentWrapper = styled.div`
@@ -60,6 +67,9 @@ const ContentWrapper = styled.div`
   margin: 0 auto;
   padding: 0 ${({ theme }) => theme.spacing.lg};
   text-align: left;
+  @media (max-width: 768px) {
+    padding: 0 ${({ theme }) => theme.spacing.md};
+  }
 `;
 
 const ExperienceItem = styled.div`
@@ -75,6 +85,8 @@ const ExperienceItem = styled.div`
     flex-direction: column;
     align-items: center;
     text-align: center;
+    padding: ${({ theme }) => theme.spacing.md};
+    margin-bottom: ${({ theme }) => theme.spacing.lg};
   }
 `;
 
@@ -106,6 +118,10 @@ const ExperienceLogo = styled.div`
 const ExperienceTitle = styled.h3`
   color: ${({ theme }) => theme.colors.text};
   margin-bottom: ${({ theme }) => theme.spacing.sm};
+  font-size: 1.25rem;
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
   a {
     color: ${({ theme }) => theme.colors.secondary};
     text-decoration: underline;
@@ -120,6 +136,10 @@ const ExperienceDate = styled.p`
   color: ${({ theme }) => theme.colors.textLight};
   font-style: italic;
   margin-bottom: ${({ theme }) => theme.spacing.md};
+  font-size: 0.95rem;
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const ProjectGrid = styled.div`
@@ -128,6 +148,10 @@ const ProjectGrid = styled.div`
   gap: ${({ theme }) => theme.spacing.lg};
   margin-top: ${({ theme }) => theme.spacing.xl};
   width: 100%;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: ${({ theme }) => theme.spacing.md};
+  }
 `;
 
 const ProjectCard = styled.div`
@@ -156,6 +180,18 @@ const ProjectImage = styled.img`
 
 const ProjectContent = styled.div`
   padding: ${({ theme }) => theme.spacing.lg};
+  h3 {
+    font-size: 1.25rem;
+    @media (max-width: 768px) {
+      font-size: 1.1rem;
+    }
+  }
+  p {
+    font-size: 0.95rem;
+    @media (max-width: 768px) {
+      font-size: 0.9rem;
+    }
+  }
 `;
 
 const ProjectButton = styled.a`
@@ -194,6 +230,16 @@ const AchievementItem = styled.li`
   padding: ${({ theme }) => theme.spacing.lg};
   border-radius: 8px;
   box-shadow: ${({ theme }) => theme.shadows.small};
+  @media (max-width: 768px) {
+    padding: ${({ theme }) => theme.spacing.md};
+    margin-bottom: ${({ theme }) => theme.spacing.sm};
+  }
+  h3 {
+    font-size: 1.25rem;
+    @media (max-width: 768px) {
+      font-size: 1.1rem;
+    }
+  }
 `;
 
 const Links = styled.a`
@@ -207,6 +253,97 @@ const Links = styled.a`
   }
   &:visited {
     color: ${({ theme }) => theme.colors.text};
+  }
+`;
+
+// Animated wrapper for Hero section
+const HeroSectionWrapper = styled.div<{ show: boolean }>`
+  opacity: ${props => (props.show ? 1 : 0)};
+  transform: translateY(${props => (props.show ? '0' : '-60px')});
+  transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1), transform 0.8s cubic-bezier(0.4,0,0.2,1);
+`;
+
+// Animated wrapper for About Me section
+const AboutSectionWrapper = styled.div<{ show: boolean }>`
+  opacity: ${props => (props.show ? 1 : 0)};
+  transform: translateY(${props => (props.show ? '0' : '-60px')});
+  transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+`;
+
+const Footer = styled.footer`
+  width: 100%;
+  background: ${({ theme }) => theme.colors.background};
+  color: ${({ theme }) => theme.colors.textLight};
+  text-align: center;
+  padding: 2rem 0 1rem 0;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  border-top: 1px solid ${({ theme }) => theme.colors.textLight}22;
+  margin-top: 3rem;
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    padding: 1.5rem 0 1rem 0;
+    margin-top: 2rem;
+  }
+`;
+
+const SkillsList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+  @media (max-width: 768px) {
+    gap: 0.8rem;
+  }
+`;
+
+const SkillItem = styled.li`
+  background: #e3f2fd;
+  color: #0e0e45;
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  font-weight: 500;
+  font-size: 1rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s, box-shadow 0.25s, transform 0.18s cubic-bezier(0.4,0,0.2,1);
+  will-change: background, color, box-shadow, transform;
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+  &:hover {
+    background: #bbdefb;
+    color: #1976d2;
+    box-shadow: 0 4px 16px rgba(25, 118, 210, 0.13);
+    transform: translateY(-3px) scale(1.06);
+  }
+`;
+
+const CredentialButton = styled.a`
+  display: inline-flex;
+  align-items: center;
+  margin-top: 16px;
+  padding: 8px 24px;
+  border: 1.5px solid #888;
+  border-radius: 24px;
+  font-weight: 500;
+  color: #222;
+  text-decoration: none;
+  font-size: 1rem;
+  background: #fff;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    padding: 6px 20px;
+  }
+  &:hover {
+    background: #f5f5f5;
+    border-color: #222;
+    color: #111;
   }
 `;
 
@@ -241,10 +378,35 @@ function ScrollToHashOrState() {
 
 const App: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [showHero, setShowHero] = useState(false);
+  const [showAbout, setShowAbout] = useState(false);
+  const aboutRef = React.useRef<HTMLDivElement>(null);
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
+
+  useEffect(() => {
+    // Trigger the hero animation after a short delay for smoothness
+    const timer = setTimeout(() => setShowHero(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const ref = aboutRef.current;
+    if (!ref) return;
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShowAbout(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(ref);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>
@@ -252,73 +414,60 @@ const App: React.FC = () => {
         <GlobalStyle />
         <ScrollToHashOrState />
         <AppContainer>
-          <Navbar isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+          <Navbar/>
           <MainWrapper>
             <MainContent>
               <Routes>
                 <Route path="/" element={
                   <>
                     <Section id="hero">
-                      <Hero />
+                      <HeroSectionWrapper show={showHero}>
+                        <Hero />
+                      </HeroSectionWrapper>
                     </Section>
                     <Section id="about">
-                      <ContentWrapper>
-                        <SectionTitle>About Me</SectionTitle>
-                        <p>
-                        Hi, I'm Jane!
-                        </p>
-                        <p>
-                        I'm a Computer Science & Software Engineering student at the University of Washington Bothell, 
-                        graduating in June 2026. I am passionate about building thoughtful, user-centered products that make
-                        tech more meaningful and accessible.
-                        </p>
-                        <p>
-                        I've worked across research, engineering, and leadership — from contributing to the DAIS 
-                        (Data Analytics and Intelligent Systems) Lab, to leading design and operations for a 200+ 
-                        member tech club, UWB Innovators Hub. 
-                        </p>
-                        <p>
-                        I love designing and bringing ideas to life — whether that's through code, user 
-                        experiences, or team projects. I'm endlessly curious, always learning, and constantly 
-                        looking for ways to grow.
-                        </p>
-                      </ContentWrapper>
+                      <AboutSectionWrapper show={showAbout} ref={aboutRef}>
+                        <ContentWrapper>
+                          <SectionTitle>About Me</SectionTitle>
+                          <p>
+                          Hi, I'm Jane!
+                          </p>
+                          <p>
+                          I'm a Computer Science & Software Engineering student at the University of Washington Bothell, 
+                          graduating in June 2026. I am passionate about building thoughtful, user-centered products that make
+                          tech more meaningful and accessible.
+                          </p>
+                          <p>
+                          I've worked across research, engineering, and leadership — from contributing to the DAIS 
+                          (Data Analytics and Intelligent Systems) Lab, to leading design and operations for a 200+ 
+                          member tech club, UWB Innovators Hub. 
+                          </p>
+                          <p>
+                          I love designing and bringing ideas to life — whether that's through code, user 
+                          experiences, or team projects. I'm endlessly curious, always learning, and constantly 
+                          looking for ways to grow.
+                          </p>
+                        </ContentWrapper>
+                      </AboutSectionWrapper>
                     </Section>
 
                     <Section id="skills">
                       <ContentWrapper>
                         <SectionTitle>Skills</SectionTitle>
-                        <ul style={{
-                          display: 'flex',
-                          flexWrap: 'wrap',
-                          gap: '1.2rem',
-                          listStyle: 'none',
-                          padding: 0,
-                          margin: 0,
-                          justifyContent: 'center',
-                        }}>
-                          <li style={{
-                            background: '#e3f2fd',
-                            color: '#0e0e45',
-                            padding: '0.6rem 1.2rem',
-                            borderRadius: '20px',
-                            fontWeight: 500,
-                            fontSize: '1rem',
-                            boxShadow: '0 1px 4px rgba(0,0,0,0.06)'
-                          }}>C++</li>
-                          <li style={{ background: '#e3f2fd', color: '#0e0e45', padding: '0.6rem 1.2rem', borderRadius: '20px', fontWeight: 500, fontSize: '1rem', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>Python</li>
-                          <li style={{ background: '#e3f2fd', color: '#0e0e45', padding: '0.6rem 1.2rem', borderRadius: '20px', fontWeight: 500, fontSize: '1rem', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>JavaScript</li>
-                          <li style={{ background: '#e3f2fd', color: '#0e0e45', padding: '0.6rem 1.2rem', borderRadius: '20px', fontWeight: 500, fontSize: '1rem', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>React</li>
-                          <li style={{ background: '#e3f2fd', color: '#0e0e45', padding: '0.6rem 1.2rem', borderRadius: '20px', fontWeight: 500, fontSize: '1rem', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>HTML/CSS</li>
-                          <li style={{ background: '#e3f2fd', color: '#0e0e45', padding: '0.6rem 1.2rem', borderRadius: '20px', fontWeight: 500, fontSize: '1rem', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>Figma</li>
-                          <li style={{ background: '#e3f2fd', color: '#0e0e45', padding: '0.6rem 1.2rem', borderRadius: '20px', fontWeight: 500, fontSize: '1rem', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>UI/UX Design</li>
-                          <li style={{ background: '#e3f2fd', color: '#0e0e45', padding: '0.6rem 1.2rem', borderRadius: '20px', fontWeight: 500, fontSize: '1rem', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>Machine Learning</li>
-                          <li style={{ background: '#e3f2fd', color: '#0e0e45', padding: '0.6rem 1.2rem', borderRadius: '20px', fontWeight: 500, fontSize: '1rem', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>Git/GitHub</li>
-                          <li style={{ background: '#e3f2fd', color: '#0e0e45', padding: '0.6rem 1.2rem', borderRadius: '20px', fontWeight: 500, fontSize: '1rem', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>Leadership</li>
-                          <li style={{ background: '#e3f2fd', color: '#0e0e45', padding: '0.6rem 1.2rem', borderRadius: '20px', fontWeight: 500, fontSize: '1rem', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>Teamwork</li>
-                          <li style={{ background: '#e3f2fd', color: '#0e0e45', padding: '0.6rem 1.2rem', borderRadius: '20px', fontWeight: 500, fontSize: '1rem', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>Problem Solving</li>
-                          <li style={{ background: '#e3f2fd', color: '#0e0e45', padding: '0.6rem 1.2rem', borderRadius: '20px', fontWeight: 500, fontSize: '1rem', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>Communication</li> 
-                        </ul>
+                        <SkillsList>
+                          <SkillItem>C++</SkillItem>
+                          <SkillItem>Python</SkillItem>
+                          <SkillItem>JavaScript</SkillItem>
+                          <SkillItem>React</SkillItem>
+                          <SkillItem>HTML/CSS</SkillItem>
+                          <SkillItem>UI/UX Design</SkillItem>
+                          <SkillItem>Machine Learning</SkillItem>
+                          <SkillItem>Git/GitHub</SkillItem>
+                          <SkillItem>Leadership</SkillItem>
+                          <SkillItem>Teamwork</SkillItem>
+                          <SkillItem>Problem Solving</SkillItem>
+                          <SkillItem>Communication</SkillItem>
+                        </SkillsList>
                       </ContentWrapper>
                     </Section>
 
@@ -456,29 +605,6 @@ const App: React.FC = () => {
                       <ContentWrapper>
                         <SectionTitle>Achievements & Awards</SectionTitle>
                         <AchievementList>
-                          <style>
-                            {`
-                              .credential-btn {
-                                display: inline-flex;
-                                align-items: center;
-                                margin-top: 16px;
-                                padding: 8px 24px;
-                                border: 1.5px solid #888;
-                                border-radius: 24px;
-                                font-weight: 500;
-                                color: #222;
-                                text-decoration: none;
-                                font-size: 1rem;
-                                background: #fff;
-                                transition: background 0.2s, border-color 0.2s, color 0.2s;
-                              }
-                              .credential-btn:hover {
-                                background: #f5f5f5;
-                                border-color: #222;
-                                color: #111;
-                              }
-                            `}
-                          </style>
                           <AchievementItem>
                             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '0.5rem' }}>
                               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
@@ -488,10 +614,10 @@ const App: React.FC = () => {
                               <div style={{ marginLeft: 58, marginTop: 4, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 0 }}>
                                 <div style={{ color: '#555', fontSize: '1rem' }}>Udacity</div>
                                 <div style={{ color: '#888', fontSize: '0.95rem', marginTop: 6 }}>Issued Jan 2025</div>
-                                <a href="https://www.udacity.com/certificate/e/213d70a6-8b40-11ef-a0dc-83ddb9ef31d2" target="_blank" rel="noopener noreferrer" className="credential-btn">
+                                <CredentialButton href="https://www.udacity.com/certificate/e/213d70a6-8b40-11ef-a0dc-83ddb9ef31d2" target="_blank" rel="noopener noreferrer">
                                   Show credential
                                   <svg style={{ marginLeft: 8 }} xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"><path fill="#222" d="M14.293 5.293a1 1 0 0 1 1.414 0l5 5a1 1 0 0 1 0 1.414l-5 5a1 1 0 1 1-1.414-1.414L17.586 12H5a1 1 0 1 1 0-2h12.586l-3.293-3.293a1 1 0 0 1 0-1.414z"/></svg>
-                                </a>
+                                </CredentialButton>
                               </div>
                             </div>
                           </AchievementItem>
@@ -505,10 +631,10 @@ const App: React.FC = () => {
                                 <div style={{ color: '#555', fontSize: '1rem' }}>Google</div>
                                 <div style={{ color: '#888', fontSize: '0.95rem', marginTop: 6 }}>Issued Jul 2024</div>
                                 <div style={{ color: '#888', fontSize: '0.95rem', marginTop: 6 }}>Credential ID 5P25PKM6LN54</div>
-                                <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/5P25PKM6LN54" target="_blank" rel="noopener noreferrer" className="credential-btn">
+                                <CredentialButton href="https://www.coursera.org/account/accomplishments/specialization/certificate/5P25PKM6LN54" target="_blank" rel="noopener noreferrer">
                                   Show credential
                                   <svg style={{ marginLeft: 8 }} xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"><path fill="#222" d="M14.293 5.293a1 1 0 0 1 1.414 0l5 5a1 1 0 0 1 0 1.414l-5 5a1 1 0 1 1-1.414-1.414L17.586 12H5a1 1 0 1 1 0-2h12.586l-3.293-3.293a1 1 0 0 1 0-1.414z"/></svg>
-                                </a>
+                                </CredentialButton>
                               </div>
                             </div>
                           </AchievementItem>
@@ -556,6 +682,10 @@ const App: React.FC = () => {
               </Routes>
             </MainContent>
           </MainWrapper>
+          <Footer>
+            <div style={{ fontWeight: 700, fontSize: '1.2rem', letterSpacing: '0.1em' }}>JC</div>
+            <div style={{ marginTop: 4, fontSize: '1rem', color: '#888' }}>© 2025 Jane Choi</div>
+          </Footer>
         </AppContainer>
       </Router>
     </ThemeProvider>

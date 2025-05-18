@@ -1,13 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/j-favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="description" content="Jane Choi's personal portfolio website — software engineering, UX/UI, and project showcase." />
+    <meta name="author" content="Jane Choi" />
+    <meta property="og:title" content="Jane Choi | Portfolio" />
+    <meta property="og:description" content="Showcasing Jane Choi's work in software engineering, design, and innovation." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:url" content="https://yourdomain.com" />
+
     <title>Jane Choi :)</title>
+
+    <!-- Fonts (optional: already in index.css but safe here) -->
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Chettan+2:wght@400..800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   </head>
   <body>
+    <!-- React will mount here -->
     <div id="root"></div>
+
+    <!-- Fallback if JS is disabled -->
+    <noscript>You need to enable JavaScript to view this site.</noscript>
+
+    <!-- Main TSX entry -->
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
