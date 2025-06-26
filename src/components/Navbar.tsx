@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
@@ -72,20 +72,6 @@ const NavAnchor = styled.a`
   }
 `;
 
-const StyledLink = styled(Link)`
-  color: ${({ theme }) => theme.colors.text};
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s;
-  &:hover {
-    color: ${({ theme }) => theme.colors.secondary};
-  }
-  @media (max-width: 768px) {
-    font-size: 1.2rem;
-    padding: ${({ theme }) => theme.spacing.sm} 0;
-  }
-`;
-
 const MenuButton = styled.button`
   display: none;
   background: none;
@@ -106,31 +92,34 @@ const MenuButton = styled.button`
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     setIsMenuOpen(false);
-    if (location.pathname !== '/') {
-      window.location.href = `/#${id}`;
+
+    if (location.pathname === '/gallery') {
+      navigate('/', { state: { scrollTo: id } });
     } else {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.location.hash = `#${id}`;
       }
     }
   };
 
   const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (location.pathname === '/gallery') {
-      e.preventDefault();
-      window.location.href = '/';
-    } else if (location.pathname !== '/') {
-      e.preventDefault();
-      window.location.reload();
+    e.preventDefault();
+
+    if (location.pathname !== '/') {
+      navigate('/', { state: { scrollTo: 'top' } });
     } else {
-      e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
+    setIsMenuOpen(false);
   };
 
   return (
@@ -145,7 +134,6 @@ const Navbar: React.FC = () => {
         <NavAnchor href="#education" onClick={e => handleNavClick(e, 'education')}>Education</NavAnchor>
         <NavAnchor href="#projects" onClick={e => handleNavClick(e, 'projects')}>Projects</NavAnchor>
         <NavAnchor href="#achievements" onClick={e => handleNavClick(e, 'achievements')}>Achievements</NavAnchor>
-        <StyledLink to="/gallery">Gallery</StyledLink>
       </NavLinks>
     </NavbarContainer>
   );

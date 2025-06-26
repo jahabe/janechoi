@@ -199,44 +199,83 @@ const SocialLink = styled.a`
   }
 `;
 
+const MascotContainer = styled.div`
+  position: absolute;
+  left: -5vw;
+  bottom: 4vw;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 1vw;
+  z-index: 2;
+  pointer-events: none;
+  user-select: none;
+  @media (max-width: 768px) {
+    gap: 0.5vw;
+    bottom: 6vw;
+  }
+  @media (max-width: 480px) {
+    display: none;
+  }
+`;
+
+const MascotImage = styled.img`
+  width: 120px;
+  max-width: 9vw;
+  height: auto;
+  @media (max-width: 768px) {
+    width: 80px;
+  }
+`;
+
 const Hero = () => {
   const [weather, setWeather] = useState<'rain' | 'sunny' | 'cloudy' | null>(null);
   const [weatherText, setWeatherText] = useState<string>('');
   const [showWeather, setShowWeather] = useState(false);
+  const [meonjiClicked, setMeonjiClicked] = useState(false);
 
   useEffect(() => {
-    // Replace 'YOUR_API_KEY' with your OpenWeatherMap API key
-    const apiKey = 'b560bcd9daa77693bcd918e1f7163e6f';
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=Seattle,US&appid=${apiKey}&units=metric`;
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        if (data.weather && Array.isArray(data.weather)) {
-          const main = data.weather[0].main.toLowerCase();
-          console.log('Seattle weather main:', main);
-          if (main.includes('rain') || main.includes('drizzle') || main.includes('thunderstorm')) {
-            setWeather('rain');
-            setWeatherText("It's raining in Seattle!");
-          } else if (main.includes('clear')) {
-            setWeather('sunny');
-            setWeatherText("It's sunny in Seattle!");
-          } else if (main.includes('cloud')) {
-            setWeather('cloudy');
-            setWeatherText("It's cloudy in Seattle!");
+    const fetchWeather = () => {
+      const apiKey = import.meta.env.VITE_OPENWEATHER_API_KEY;
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=Seattle,US&appid=${apiKey}&units=metric`;
+  
+      fetch(url)
+        .then(res => res.json())
+        .then(data => {
+          const description = data.weather?.[0]?.description?.toLowerCase() || "";
+          const temp = data.main?.temp;
+          const tempText = typeof temp === "number" ? `${Math.round(temp)}°C` : "";
+  
+          if (description.includes("thunderstorm")) {
+            setWeather("rain");
+            setWeatherText(`Thunderstorm in Seattle, ${tempText}`);
+          } else if (description.includes("rain") || description.includes("drizzle")) {
+            setWeather("rain");
+            setWeatherText(`It's raining in Seattle, ${tempText}`);
+          } else if (description.includes("clear")) {
+            setWeather("sunny");
+            setWeatherText(`It's sunny in Seattle, ${tempText}`);
+          } else if (description.includes("cloud")) {
+            setWeather("cloudy");
+            setWeatherText(`It's cloudy in Seattle, ${tempText}`);
           } else {
-            setWeather('sunny');
-            setWeatherText("It's sunny in Seattle!");
+            setWeather("cloudy");
+            setWeatherText(`Seattle weather: ${description}, ${tempText}`);
           }
-        } else {
-          setWeather('sunny');
-          setWeatherText("It's sunny in Seattle!");
-        }
-      })
-      .catch(() => {
-        setWeather('sunny');
-        setWeatherText("It's sunny in Seattle!");
-      });
+        })
+        .catch(() => {
+          setWeather("cloudy");
+          setWeatherText("Weather info unavailable");
+        });
+    };
+  
+    fetchWeather(); // Run once on mount
+  
+    const interval = setInterval(fetchWeather, 1000 * 60 * 15); // Refresh every 15 minutes
+  
+    return () => clearInterval(interval);
   }, []);
+  
 
   // Animate weather after hero section appears
   useEffect(() => {
@@ -246,15 +285,25 @@ const Hero = () => {
 
   return (
     <HeroSection>
+      <MascotContainer>
+        <MascotImage
+          src={meonjiClicked ? 'clickmeonji.png' : 'meonji.png'}
+          alt="Meonji"
+          style={{ cursor: 'pointer', pointerEvents: 'auto' }}
+          onClick={() => setMeonjiClicked(clicked => !clicked)}
+        />
+        <MascotImage src="lotto.png" alt="Lotto" />
+        <MascotImage src="milo.png" alt="Milo" />
+      </MascotContainer>
       <ProfileContainer>
         <ProfilePicture>
-          <img src="/Jane- pp.jpg" alt="Jane Choi" />
+          <img src="Jane- pp.jpg" alt="Jane Choi" />
         </ProfilePicture>
         <TextContainer>
           <Name>Jane Choi</Name>
           <Title>Software Engineer | Developer | Designer</Title>
           <Description>
-          Hello! My name is Jane :) I'm a junior at University of Washington Bothell studying 
+          Hello! My name is Jane :) I'm a senior at University of Washington Bothell studying 
           Computer Science and Software Engineering.
           </Description>
         </TextContainer>
@@ -284,9 +333,9 @@ const Hero = () => {
       </ProfileContainer>
       <WeatherWrapper show={showWeather}>
         {weather && weatherText && <WeatherText>{weatherText}</WeatherText>}
-        {weather === 'rain' && <HeroImage src="/rainyDay.png" alt="Rainy Day Chibi" />}
-        {weather === 'sunny' && <HeroImage src="/sunnyDay.png" alt="Sunny Day Chibi" />}
-        {weather === 'cloudy' && <HeroImage src="/cloudyDay.png" alt="Cloudy Day Chibi" />}
+        {weather === 'rain' && <HeroImage src="rainyDay.png" alt="Rainy Day Chibi" />}
+        {weather === 'sunny' && <HeroImage src="sunnyDay.png" alt="Sunny Day Chibi" />}
+        {weather === 'cloudy' && <HeroImage src="cloudyDay.png" alt="Cloudy Day Chibi" />}
       </WeatherWrapper>
     </HeroSection>
   );

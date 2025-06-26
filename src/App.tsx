@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { theme } from './styles/theme.ts';
 import Navbar from './components/Navbar.tsx';
@@ -45,6 +45,12 @@ const Section = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  @media (max-width: 768px) {
+    padding: ${({ theme }) => theme.spacing.md} 0;
+  }
+  @media (max-width: 600px) {
+    padding: 0.7rem 0;
+  }
 `;
 
 const SectionTitle = styled.h2`
@@ -144,13 +150,25 @@ const ExperienceDate = styled.p`
 
 const ProjectGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: ${({ theme }) => theme.spacing.lg};
   margin-top: ${({ theme }) => theme.spacing.xl};
-  width: 100%;
-  @media (max-width: 768px) {
+  width: calc(100vw - 128px);
+  max-width: calc(100vw - 128px);
+  margin-left: 50%;
+  transform: translateX(-50%);
+  padding-left: 64px;
+  padding-right: 64px;
+  box-sizing: border-box;
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 700px) {
     grid-template-columns: 1fr;
-    gap: ${({ theme }) => theme.spacing.md};
+    padding-left: 24px;
+    padding-right: 24px;
+    width: calc(100vw - 48px);
+    max-width: calc(100vw - 48px);
   }
 `;
 
@@ -252,7 +270,7 @@ const Links = styled.a`
     text-decoration: underline;
   }
   &:visited {
-    color: ${({ theme }) => theme.colors.text};
+    color: #0e0 e45;
   }
 `;
 
@@ -438,12 +456,12 @@ const App: React.FC = () => {
                           tech more meaningful and accessible.
                           </p>
                           <p>
-                          I've worked across research, engineering, and leadership — from contributing to the DAIS 
+                          I've worked across research, engineering, and leadership, from contributing to the DAIS 
                           (Data Analytics and Intelligent Systems) Lab, to leading design and operations for a 200+ 
                           member tech club, UWB Innovators Hub. 
                           </p>
                           <p>
-                          I love designing and bringing ideas to life — whether that's through code, user 
+                          I love designing and bringing ideas to life, whether that's through code, user 
                           experiences, or team projects. I'm endlessly curious, always learning, and constantly 
                           looking for ways to grow.
                           </p>
@@ -476,7 +494,19 @@ const App: React.FC = () => {
                         <SectionTitle>Experience</SectionTitle>
                         <ExperienceItem>
                           <ExperienceLogo>
-                            <img src="/dais.jpg" alt="DAIS Lab Logo" />
+                            <img src="billow.png" alt="DAIS Lab Logo" />
+                          </ExperienceLogo>
+                          <div>
+                            <ExperienceTitle>UI/UX Design Intern @ <Links href="https://www.billow.fun/" target="_blank" rel="noopener noreferrer">Billow</Links></ExperienceTitle>
+                            <ExperienceDate>June 2025 - Present</ExperienceDate>
+                            <p>
+                            Contributing to the design and development of user-centered product experiences by conducting UX research, wireframing, and high-fidelity prototyping in Figma, Canva, and Wix.  
+                            </p>
+                          </div>
+                        </ExperienceItem>
+                        <ExperienceItem>
+                          <ExperienceLogo>
+                            <img src="dais.jpg" alt="DAIS Lab Logo" />
                           </ExperienceLogo>
                           <div>
                             <ExperienceTitle>Undergraduate Researcher @ <Links href="https://sites.google.com/uw.edu/dais-uw" target="_blank" rel="noopener noreferrer">DAIS Lab</Links></ExperienceTitle>
@@ -488,11 +518,11 @@ const App: React.FC = () => {
                         </ExperienceItem>
                         <ExperienceItem>
                           <ExperienceLogo>
-                          <img src="/wsos.png" alt="WSOS Lab Logo" />
+                          <img src="wsos.png" alt="WSOS Lab Logo" />
                           </ExperienceLogo>
                           <div>
                             <ExperienceTitle>STEM Scholar Lead @ <Links href="https://waopportunityscholarship.org/" target="_blank" rel="noopener noreferrer">WSOS</Links></ExperienceTitle>
-                            <ExperienceDate>Oct 2024 - Present</ExperienceDate>
+                            <ExperienceDate>Oct 2024 - June 2025</ExperienceDate>
                             <p>
                             Designed and executed a 9-month outreach plan using biweekly emails, Google Meet invites, and peer-based accountability check-ins for 15+ mentees, raising engagement from 7% to 60%.
                             </p>
@@ -500,7 +530,7 @@ const App: React.FC = () => {
                         </ExperienceItem>
                         <ExperienceItem>
                           <ExperienceLogo>
-                          <img src="/ihub.jpg" alt="Innovators Hub Logo" />
+                          <img src="ihub.jpg" alt="Innovators Hub Logo" />
                           </ExperienceLogo>
                           <div>
                             <ExperienceTitle>Associate Club Founder/Chief Designer @ <Links href="https://www.uwinnovators.com/index.html" target="_blank" rel="noopener noreferrer">Innovators Hub</Links></ExperienceTitle>
@@ -511,7 +541,7 @@ const App: React.FC = () => {
                         </ExperienceItem>
                         <ExperienceItem>
                           <ExperienceLogo>
-                          <img src="/rise.jpg" alt="RISE Logo" />
+                          <img src="rise.jpg" alt="RISE Logo" />
                           </ExperienceLogo>
                           <div>
                             <ExperienceTitle>
@@ -533,7 +563,7 @@ const App: React.FC = () => {
                         <SectionTitle>Education</SectionTitle>
                         <ExperienceItem>
                           <ExperienceLogo>
-                          <img src="/uw.png" alt="UW Logo" />
+                          <img src="uw.png" alt="UW Logo" />
                           </ExperienceLogo>
                           <div>
                             <ExperienceTitle>Bachelor of Science in Computer Science and Software Engineering</ExperienceTitle>
@@ -553,7 +583,7 @@ const App: React.FC = () => {
                         </ExperienceItem>
                         <ExperienceItem>
                           <ExperienceLogo>
-                          <img src="/rise.jpg" alt="Edmonds College Logo" />
+                          <img src="rise.jpg" alt="Edmonds College Logo" />
                           </ExperienceLogo>
                           <div>
                             <ExperienceTitle>Associate of Science in Computer Science and Software Engineering</ExperienceTitle>
@@ -576,27 +606,79 @@ const App: React.FC = () => {
                       <ContentWrapper>
                         <SectionTitle>Projects</SectionTitle>
                         <ProjectGrid>
+
+                        <ProjectCard>
+                            <ProjectImage src="iFoodBee2.jpg" alt="Project 1" />
+                            <ProjectContent>
+                              <h3>Food Waste Reduction Platform Design
+                              </h3>
+                              <p>
+                                Jan 2025 - Feb 2025
+                              </p>
+                              <p>
+                              Designed iFoodBee's web platform to help reduce food waste and support local businesses through user-friendly UX and visual storytelling.
+                              </p>
+                              <ProjectButton className="project-btn" href="https://www.behance.net/gallery/228878415/iFoodBee-Web-Design-MockUp?lo=1750782022?share=1" target="_blank" rel="noopener noreferrer">👀</ProjectButton>
+                            </ProjectContent>
+                          </ProjectCard>
+
+                        <ProjectCard>
+                            <ProjectImage src="Adulthood2.jpg" alt="Adulthood" />
+                            <ProjectContent>
+                              <h3>FigBuild2025 Design Hackathon
+                              </h3>
+                              <p>
+                                Apr 2025
+                              </p>
+                              <p>
+                                Designed Adulthood, an AI-powered app that helps young adults (18+) navigate real-world challenges like taxes, L&I, and car accidents through an instant-answer chatbot and a built-in learning center.
+                              </p>
+                            </ProjectContent>
+                          </ProjectCard>
+
+                        <ProjectCard>
+                            <ProjectImage src="ihubdemoday.jpg" alt="Project 2" />
+                            <ProjectContent>
+                              <h3>Club Event Visual Design & Planning</h3>
+                              <p>
+                               Apr 2025 - Jun 2025
+                              </p>
+                              <p>
+                              Led the full design direction for Demo Day and a series of company tours. Created all event visuals and coordinated with club officers to plan the schedule and timeline.
+                              </p>
+                              <ProjectButton className="project-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7337213071590944769" target="_blank" rel="noopener noreferrer">👀</ProjectButton>
+                            </ProjectContent>
+                          </ProjectCard>
+
                           <ProjectCard>
                             <ProjectImage src="Project1.jpg" alt="Project 1" />
                             <ProjectContent>
                               <h3>AI-Powered Image Classifier with PyTorch
                               </h3>
                               <p>
+                                Jan 2025 - Feb 2025
+                              </p>
+                              <p>
                               A VGG16-based image classifier built with PyTorch to learn deep learning through hands-on training and prediction.
                               </p>
                               <ProjectButton className="project-btn" href="https://github.com/jahabe/Image-Classifier" target="_blank" rel="noopener noreferrer">👀</ProjectButton>
                             </ProjectContent>
                           </ProjectCard>
+
                           <ProjectCard>
                             <ProjectImage src="mesawebsite.png" alt="Project 2" />
                             <ProjectContent>
                               <h3>Non-Profit Organization Website Design</h3>
+                              <p>
+                                Jun 2024 - Aug 2024
+                              </p>
                               <p>
                               Redesigned the Edmonds College MESA website to improve user interaction and layout.
                               </p>
                               <ProjectButton className="project-btn" href="https://dribbble.com/shots/25951978-Non-Profit-Organization-Website-Design" target="_blank" rel="noopener noreferrer">👀</ProjectButton>
                             </ProjectContent>
                           </ProjectCard>
+
                         </ProjectGrid>
                       </ContentWrapper>
                     </Section>
@@ -605,10 +687,26 @@ const App: React.FC = () => {
                       <ContentWrapper>
                         <SectionTitle>Achievements & Awards</SectionTitle>
                         <AchievementList>
+                        <AchievementItem>
+                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '0.5rem' }}>
+                              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                                <img src="iHubCompletion.jpeg" alt="I Hub Badge Logo" style={{ width: 40, height: 40, borderRadius: 8, background: '#fff' }} />
+                                <h3 style={{ fontFamily: "'Baloo Chettan 2', 'Montserrat', Arial, sans-serif", fontWeight: 600, fontSize: '1.25rem', color: '#222', margin: 0 }}>Innovators Hub Launchpad S25 Completion Badge</h3>
+                              </div>
+                              <div style={{ marginLeft: 58, marginTop: 4, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 0 }}>
+                                <div style={{ color: '#555', fontSize: '1rem' }}>Innovators Hub (1%)</div>
+                                <div style={{ color: '#888', fontSize: '0.95rem', marginTop: 6 }}>Issued Jun 2025</div>
+                                <CredentialButton href="https://www.linkedin.com/in/jane026/overlay/1749331071596/single-media-viewer/?profileId=ACoAAEKJWnUBiAinhTNzQjlo5oQPwJgDdF1FnxQ" target="_blank" rel="noopener noreferrer">
+                                  Show credential
+                                  <svg style={{ marginLeft: 8 }} xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"><path fill="#222" d="M14.293 5.293a1 1 0 0 1 1.414 0l5 5a1 1 0 0 1 0 1.414l-5 5a1 1 0 1 1-1.414-1.414L17.586 12H5a1 1 0 1 1 0-2h12.586l-3.293-3.293a1 1 0 0 1 0-1.414z"/></svg>
+                                </CredentialButton>
+                              </div>
+                            </div>
+                          </AchievementItem>
                           <AchievementItem>
                             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '0.5rem' }}>
                               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                                <img src="/udacity.jpg" alt="Udacity Logo" style={{ width: 40, height: 40, borderRadius: 8, background: '#fff' }} />
+                                <img src="udacity.jpg" alt="Udacity Logo" style={{ width: 40, height: 40, borderRadius: 8, background: '#fff' }} />
                                 <h3 style={{ fontFamily: "'Baloo Chettan 2', 'Montserrat', Arial, sans-serif", fontWeight: 600, fontSize: '1.25rem', color: '#222', margin: 0 }}>AWS - AI Programming with Python</h3>
                               </div>
                               <div style={{ marginLeft: 58, marginTop: 4, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 0 }}>
@@ -624,7 +722,7 @@ const App: React.FC = () => {
                           <AchievementItem>
                             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '0.5rem' }}>
                               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                                <img src="/Google.png" alt="Google Logo" style={{ width: 40, height: 40, borderRadius: 8, background: '#fff' }} />
+                                <img src="Google.png" alt="Google Logo" style={{ width: 40, height: 40, borderRadius: 8, background: '#fff' }} />
                                 <h3 style={{ fontFamily: "'Baloo Chettan 2', 'Montserrat', Arial, sans-serif", fontWeight: 600, fontSize: '1.25rem', color: '#222', margin: 0 }}>Google UX Design Specialization</h3>
                               </div>
                               <div style={{ marginLeft: 58, marginTop: 4, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 0 }}>
@@ -655,7 +753,7 @@ const App: React.FC = () => {
                           <AchievementItem>
                             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '0.5rem' }}>
                               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                                <img src="/wsos.png" alt="WSOS Logo" style={{ width: 40, height: 40, borderRadius: 8, background: '#fff', objectFit: 'contain' }} />
+                                <img src="wsos.png" alt="WSOS Logo" style={{ width: 40, height: 40, borderRadius: 8, background: '#fff', objectFit: 'contain' }} />
                                 <h3 style={{ fontFamily: "'Baloo Chettan 2', 'Montserrat', Arial, sans-serif", fontWeight: 600, fontSize: '1.25rem', color: '#222', margin: 0 }}>Baccalaureate Scholarship</h3>
                               </div>
                               <div style={{ marginLeft: 58, marginTop: 4, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 0 }}>
