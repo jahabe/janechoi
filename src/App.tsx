@@ -3,7 +3,7 @@ import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-d
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { theme } from './styles/theme.ts';
 import Navbar from './components/Navbar.tsx';
-import Hero from './components/Hero.tsx'; 
+import Hero from './components/Hero.tsx';
 import styled from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
@@ -305,17 +305,47 @@ const Footer = styled.footer`
   }
 `;
 
+// Change SkillsGrid to display rows instead of columns
+const SkillsGrid = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  @media (max-width: 768px) {
+    gap: 1.2rem;
+  }
+`;
+
+const SkillRow = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+`;
+
+const RowTitle = styled.h3`
+  font-size: 1.2rem;
+  color: ${({ theme }) => theme.colors.text};
+  margin: 0;
+  font-weight: 600;
+  min-width: 150px;
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    min-width: auto;
+  }
+`;
+
 const SkillsList = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  gap: 1.2rem;
+  gap: 0.8rem;
   list-style: none;
   padding: 0;
   margin: 0;
-  justify-content: center;
-  @media (max-width: 768px) {
-    gap: 0.8rem;
-  }
+  flex: 1;
 `;
 
 const SkillItem = styled.li`
@@ -329,9 +359,14 @@ const SkillItem = styled.li`
   cursor: pointer;
   transition: background 0.25s, color 0.25s, box-shadow 0.25s, transform 0.18s cubic-bezier(0.4,0,0.2,1);
   will-change: background, color, box-shadow, transform;
+  max-width: 400px;
+  text-align: left;
+  white-space: nowrap;
   @media (max-width: 768px) {
     font-size: 0.9rem;
     padding: 0.5rem 1rem;
+    max-width: none;
+    white-space: normal;
   }
   &:hover {
     background: #bbdefb;
@@ -448,23 +483,21 @@ const App: React.FC = () => {
                         <ContentWrapper>
                           <SectionTitle>About Me</SectionTitle>
                           <p>
-                          Hi, I'm Jane!
+                           I’m a Computer Science & Software Engineering student at the University of Washington, graduating in June 2026.
                           </p>
+
                           <p>
-                          I'm a Computer Science & Software Engineering student at the University of Washington Bothell, 
-                          graduating in June 2026. I am passionate about building thoughtful, user-centered products that make
-                          tech more meaningful and accessible.
+                          I’m currently involved in two research projects: (1) Data Analysis & Intelligent Systems (DAIS) Lab and (2) 
+                          Custom Keyset Skins for the Microsoft Surface Laptop. Even though these projects are very different, I joined both because 
+                          I love learning new fields and understanding how technology can improve someone’s life.
                           </p>
+
                           <p>
-                          I've worked across research, engineering, and leadership, from contributing to the DAIS 
-                          (Data Analytics and Intelligent Systems) Lab, to leading design and operations for a 200+ 
-                          member tech club, UWB Innovators Hub. 
-                          </p>
-                          <p>
-                          I love designing and bringing ideas to life, whether that's through code, user 
-                          experiences, or team projects. I'm endlessly curious, always learning, and constantly 
-                          looking for ways to grow.
-                          </p>
+                          At my core, I’m driven by people. I constantly think about real pain points in daily life and ask: “How can this be solved? 
+                          What tools do I need to build it? What should I learn next?” I’m a curious learner, a user-driven thinker, and a problem 
+                          solver who cares deeply about creating meaningful, human-centered solutions.
+                          </p> 
+
                         </ContentWrapper>
                       </AboutSectionWrapper>
                     </Section>
@@ -472,20 +505,38 @@ const App: React.FC = () => {
                     <Section id="skills">
                       <ContentWrapper>
                         <SectionTitle>Skills</SectionTitle>
-                        <SkillsList>
-                          <SkillItem>C++</SkillItem>
-                          <SkillItem>Python</SkillItem>
-                          <SkillItem>JavaScript</SkillItem>
-                          <SkillItem>React</SkillItem>
-                          <SkillItem>HTML/CSS</SkillItem>
-                          <SkillItem>UI/UX Design</SkillItem>
-                          <SkillItem>Machine Learning</SkillItem>
-                          <SkillItem>Git/GitHub</SkillItem>
-                          <SkillItem>Leadership</SkillItem>
-                          <SkillItem>Teamwork</SkillItem>
-                          <SkillItem>Problem Solving</SkillItem>
-                          <SkillItem>Communication</SkillItem>
-                        </SkillsList>
+                        <SkillsGrid>
+                          <SkillRow>
+                            <RowTitle>Technical Skills</RowTitle>
+                            <SkillsList>
+                              <SkillItem>Python</SkillItem>
+                              <SkillItem>C++</SkillItem>
+                              <SkillItem>Java</SkillItem>
+                              <SkillItem>Machine Learning</SkillItem>
+                              <SkillItem>Deep Learning</SkillItem>
+                              <SkillItem>Data Analysis</SkillItem>
+                              <SkillItem>Generative AI</SkillItem>
+                              <SkillItem>Git/GitHub</SkillItem>
+                              <SkillItem>SQL</SkillItem>
+                            </SkillsList>
+                          </SkillRow>
+                          
+                          <SkillRow>
+                            <RowTitle>Soft Skills</RowTitle>
+                            <SkillsList>
+                              <SkillItem>Adaptability</SkillItem>
+                              <SkillItem>Data Storytelling</SkillItem>
+                              <SkillItem>Continuous Learning</SkillItem>
+                              <SkillItem>Leadership</SkillItem>
+                              <SkillItem>Continuous Learning</SkillItem>
+                              <SkillItem>Teamwork</SkillItem>
+                              <SkillItem>Problem Solving</SkillItem>
+                              <SkillItem>Critical Thinking</SkillItem>
+                              <SkillItem>Communication</SkillItem>
+                              <SkillItem>Cross-functional Teamwork</SkillItem>
+                            </SkillsList>
+                          </SkillRow>
+                        </SkillsGrid>
                       </ContentWrapper>
                     </Section>
 
@@ -494,25 +545,13 @@ const App: React.FC = () => {
                         <SectionTitle>Experience</SectionTitle>
                         <ExperienceItem>
                           <ExperienceLogo>
-                            <img src="billow.png" alt="DAIS Lab Logo" />
-                          </ExperienceLogo>
-                          <div>
-                            <ExperienceTitle>UI/UX Design Intern @ <Links href="https://www.billow.fun/" target="_blank" rel="noopener noreferrer">Billow</Links></ExperienceTitle>
-                            <ExperienceDate>June 2025 - Present</ExperienceDate>
-                            <p>
-                            Contributing to the design and development of user-centered product experiences by conducting UX research, wireframing, and high-fidelity prototyping in Figma, Canva, and Wix.  
-                            </p>
-                          </div>
-                        </ExperienceItem>
-                        <ExperienceItem>
-                          <ExperienceLogo>
                             <img src="dais.jpg" alt="DAIS Lab Logo" />
                           </ExperienceLogo>
                           <div>
                             <ExperienceTitle>Undergraduate Researcher @ <Links href="https://sites.google.com/uw.edu/dais-uw" target="_blank" rel="noopener noreferrer">DAIS Lab</Links></ExperienceTitle>
                             <ExperienceDate>May 2025 - Present</ExperienceDate>
                             <p>
-                              Selected to join the DAIS Lab under Dr. Si, focused on intelligent systems and machine learning research in the field of biomedicine.
+                             Dr. Si’s Data Analysis & Intelligent Systems (DAIS) Group - DeepTracer Generative AI Team
                             </p>
                           </div>
                         </ExperienceItem>
@@ -521,10 +560,10 @@ const App: React.FC = () => {
                           <img src="wsos.png" alt="WSOS Lab Logo" />
                           </ExperienceLogo>
                           <div>
-                            <ExperienceTitle>STEM Scholar Lead @ <Links href="https://waopportunityscholarship.org/" target="_blank" rel="noopener noreferrer">WSOS</Links></ExperienceTitle>
-                            <ExperienceDate>Oct 2024 - June 2025</ExperienceDate>
+                            <ExperienceTitle>Returning STEM Scholar Lead @ <Links href="https://waopportunityscholarship.org/" target="_blank" rel="noopener noreferrer">WSOS</Links></ExperienceTitle>
+                            <ExperienceDate>Oct 2024 - Present</ExperienceDate>
                             <p>
-                            Designed and executed a 9-month outreach plan using biweekly emails, Google Meet invites, and peer-based accountability check-ins for 15+ mentees, raising engagement from 7% to 60%.
+                            Returning STEM Scholar Lead for the WSOS program, where I mentor and support STEM students in their academic and career development.
                             </p>
                           </div>
                         </ExperienceItem>
@@ -536,7 +575,32 @@ const App: React.FC = () => {
                             <ExperienceTitle>Associate Club Founder/Chief Designer @ <Links href="https://www.uwinnovators.com/index.html" target="_blank" rel="noopener noreferrer">Innovators Hub</Links></ExperienceTitle>
                             <ExperienceDate>Sep 2024 - Present</ExperienceDate>
                             <p>
-                            Led a 200+ member tech club's logistics, design, and planning operations for student innovators/builders. </p>
+                            A 200+ member tech club for student innovators/builders.
+                            </p>
+                          </div>
+                        </ExperienceItem>
+                        <ExperienceItem>
+                          <ExperienceLogo>
+                            <img src="idea_enterprises_llc_logo.jpg" alt="IDEA logo" />
+                          </ExperienceLogo>
+                          <div>
+                            <ExperienceTitle>UX Designer Intern @ <Links href="https://www.idea-vis.com/" target="_blank" rel="noopener noreferrer">IDEA Enterprises LLC</Links></ExperienceTitle>
+                            <ExperienceDate>July 2025 - Sep 2025</ExperienceDate>
+                            <p>
+                             Interviewed stakeholders, gathered insights, and worked on AI-powered safety systems. Created the full design system and delivered high-fidelity app prototypes.
+                            </p>
+                          </div>
+                        </ExperienceItem>
+                        <ExperienceItem>
+                          <ExperienceLogo>
+                            <img src="billow.png" alt="Billow Logo" />
+                          </ExperienceLogo>
+                          <div>
+                            <ExperienceTitle>Web Designer Intern @ <Links href="https://www.billow.fun/" target="_blank" rel="noopener noreferrer">Billow</Links></ExperienceTitle>
+                            <ExperienceDate>June 2025 - Sep 2025</ExperienceDate>
+                            <p>
+                             Designed and developed a web platform for Billow, a platform that helps people find and book unique experiences. 
+                            </p>
                           </div>
                         </ExperienceItem>
                         <ExperienceItem>
@@ -549,9 +613,7 @@ const App: React.FC = () => {
                             </ExperienceTitle>
                             <ExperienceDate>Nov 2023 - June 2024</ExperienceDate>
                             <p>
-                              Mentored STEM students by guiding them through academic challenges, fostering a user-centered mindset, 
-                              and encouraging collaboration. I tailored strategies to support individual growth, helping students 
-                              build confidence, resilience, and teamwork skills. 
+                             Mentored students in computer science and helped them with their projects.
                             </p>
                           </div>
                         </ExperienceItem>
@@ -567,7 +629,7 @@ const App: React.FC = () => {
                           </ExperienceLogo>
                           <div>
                             <ExperienceTitle>Bachelor of Science in Computer Science and Software Engineering</ExperienceTitle>
-                            <ExperienceDate>University of Washington, 2024 - 2026</ExperienceDate>
+                            <ExperienceDate>University of Washington, Sep 2024 - Jun 2026(Expected)</ExperienceDate>
                             <p>
                               B.S. Computer Science & Software Engineering
                             </p>
@@ -687,6 +749,18 @@ const App: React.FC = () => {
                       <ContentWrapper>
                         <SectionTitle>Achievements & Awards</SectionTitle>
                         <AchievementList>
+                        <AchievementItem>
+                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '0.5rem' }}>
+                              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                                <img src="Codepath.png" alt="Codepath Logo" style={{ width: 40, height: 40, borderRadius: 8, background: '#fff' }} />
+                                <h3 style={{ fontFamily: "'Baloo Chettan 2', 'Montserrat', Arial, sans-serif", fontWeight: 600, fontSize: '1.25rem', color: '#222', margin: 0 }}>Intermediate Technical Interview Prep Completion</h3>
+                              </div>
+                              <div style={{ marginLeft: 58, marginTop: 4, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 0 }}>
+                                <div style={{ color: '#555', fontSize: '1rem' }}>Codepath*org</div>
+                                <div style={{ color: '#888', fontSize: '0.95rem', marginTop: 6 }}>Issued Aug 2025</div>
+                              </div>
+                            </div>
+                          </AchievementItem>
                         <AchievementItem>
                             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '0.5rem' }}>
                               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
