@@ -286,7 +286,7 @@ const Hero = () => {
         <Name>Jane Choi</Name>
       </NameSection>
       <ProfileImageSection>
-        <img src="Jane- pp.jpg" alt="Jane Choi" />
+        <img src={`${import.meta.env.BASE_URL}Jane- pp.jpg`} alt="Jane Choi" />
       </ProfileImageSection>
       <ContentSection>
         <TextContainer>
@@ -295,7 +295,7 @@ const Hero = () => {
           strong technical background, passionate about building products that solve pain points for someone. 
           </Description>
         </TextContainer>
-        <SocialLinks>gi
+        <SocialLinks>
           <SocialLink href="https://www.linkedin.com/in/jane026/" target="_blank" rel="noopener noreferrer">
             <FaLinkedin />
           </SocialLink>
@@ -309,19 +309,19 @@ const Hero = () => {
         <DecorativeElementsContainer>
           <MascotContainer>
             <MascotImage
-              src={meonjiClicked ? 'clickmeonji.png' : 'meonji.png'}
+              src={`${import.meta.env.BASE_URL}${meonjiClicked ? 'clickmeonji.png' : 'meonji.png'}`}
               alt="Meonji"
               style={{ cursor: 'pointer', pointerEvents: 'auto' }}
               onClick={() => setMeonjiClicked(clicked => !clicked)}
             />
-            <MascotImage src="lotto.png" alt="Lotto" />
-            <MascotImage src="milo.png" alt="Milo" />
+            <MascotImage src={`${import.meta.env.BASE_URL}lotto.png`} alt="Lotto" />
+            <MascotImage src={`${import.meta.env.BASE_URL}milo.png`} alt="Milo" />
           </MascotContainer>
           <WeatherWrapper show={showWeather}>
             {weather && weatherText && <WeatherText>{weatherText}</WeatherText>}
-            {weather === 'rain' && <HeroImage src="rainyDay.png" alt="Rainy Day Chibi" />}
-            {weather === 'sunny' && <HeroImage src="sunnyDay.png" alt="Sunny Day Chibi" />}
-            {weather === 'cloudy' && <HeroImage src="cloudyDay.png" alt="Cloudy Day Chibi" />}
+            {weather === 'rain' && <HeroImage src={`${import.meta.env.BASE_URL}rainyDay.png`} alt="Rainy Day Chibi" />}
+            {weather === 'sunny' && <HeroImage src={`${import.meta.env.BASE_URL}sunnyDay.png`} alt="Sunny Day Chibi" />}
+            {weather === 'cloudy' && <HeroImage src={`${import.meta.env.BASE_URL}cloudyDay.png`} alt="Cloudy Day Chibi" />}
           </WeatherWrapper>
         </DecorativeElementsContainer>
       </ContentSection>

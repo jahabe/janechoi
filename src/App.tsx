@@ -545,7 +545,7 @@ const App: React.FC = () => {
                         <SectionTitle>Experience</SectionTitle>
                         <ExperienceItem>
                           <ExperienceLogo>
-                            <img src="dais.jpg" alt="DAIS Lab Logo" />
+                            <img src={`${import.meta.env.BASE_URL}dais.jpg`} alt="DAIS Lab Logo" />
                           </ExperienceLogo>
                           <div>
                             <ExperienceTitle>Undergraduate Researcher @ <Links href="https://sites.google.com/uw.edu/dais-uw" target="_blank" rel="noopener noreferrer">DAIS Lab</Links></ExperienceTitle>
@@ -557,7 +557,7 @@ const App: React.FC = () => {
                         </ExperienceItem>
                         <ExperienceItem>
                           <ExperienceLogo>
-                          <img src="wsos.png" alt="WSOS Lab Logo" />
+                          <img src={`${import.meta.env.BASE_URL}wsos.png`} alt="WSOS Lab Logo" />
                           </ExperienceLogo>
                           <div>
                             <ExperienceTitle>Returning STEM Scholar Lead @ <Links href="https://waopportunityscholarship.org/" target="_blank" rel="noopener noreferrer">WSOS</Links></ExperienceTitle>
@@ -569,7 +569,7 @@ const App: React.FC = () => {
                         </ExperienceItem>
                         <ExperienceItem>
                           <ExperienceLogo>
-                          <img src="ihub.jpg" alt="Innovators Hub Logo" />
+                          <img src={`${import.meta.env.BASE_URL}ihub.jpg`} alt="Innovators Hub Logo" />
                           </ExperienceLogo>
                           <div>
                             <ExperienceTitle>Associate Club Founder/Chief Designer @ <Links href="https://www.uwinnovators.com/index.html" target="_blank" rel="noopener noreferrer">Innovators Hub</Links></ExperienceTitle>
@@ -581,7 +581,7 @@ const App: React.FC = () => {
                         </ExperienceItem>
                         <ExperienceItem>
                           <ExperienceLogo>
-                            <img src="idea_enterprises_llc_logo.jpg" alt="IDEA logo" />
+                            <img src={`${import.meta.env.BASE_URL}idea_enterprises_llc_logo.jpg`} alt="IDEA logo" />
                           </ExperienceLogo>
                           <div>
                             <ExperienceTitle>UX Designer Intern @ <Links href="https://www.idea-vis.com/" target="_blank" rel="noopener noreferrer">IDEA Enterprises LLC</Links></ExperienceTitle>
@@ -593,7 +593,7 @@ const App: React.FC = () => {
                         </ExperienceItem>
                         <ExperienceItem>
                           <ExperienceLogo>
-                            <img src="billow.png" alt="Billow Logo" />
+                            <img src={`${import.meta.env.BASE_URL}billow.png`} alt="Billow Logo" />
                           </ExperienceLogo>
                           <div>
                             <ExperienceTitle>Web Designer Intern @ <Links href="https://www.billow.fun/" target="_blank" rel="noopener noreferrer">Billow</Links></ExperienceTitle>
@@ -605,7 +605,7 @@ const App: React.FC = () => {
                         </ExperienceItem>
                         <ExperienceItem>
                           <ExperienceLogo>
-                          <img src="rise.jpg" alt="RISE Logo" />
+                          <img src={`${import.meta.env.BASE_URL}rise.jpg`} alt="RISE Logo" />
                           </ExperienceLogo>
                           <div>
                             <ExperienceTitle>
@@ -625,7 +625,7 @@ const App: React.FC = () => {
                         <SectionTitle>Education</SectionTitle>
                         <ExperienceItem>
                           <ExperienceLogo>
-                          <img src="uw.png" alt="UW Logo" />
+                          <img src={`${import.meta.env.BASE_URL}uw.png`} alt="UW Logo" />
                           </ExperienceLogo>
                           <div>
                             <ExperienceTitle>Bachelor of Science in Computer Science and Software Engineering</ExperienceTitle>
@@ -645,7 +645,7 @@ const App: React.FC = () => {
                         </ExperienceItem>
                         <ExperienceItem>
                           <ExperienceLogo>
-                          <img src="rise.jpg" alt="Edmonds College Logo" />
+                          <img src={`${import.meta.env.BASE_URL}rise.jpg`} alt="Edmonds College Logo" />
                           </ExperienceLogo>
                           <div>
                             <ExperienceTitle>Associate of Science in Computer Science and Software Engineering</ExperienceTitle>
@@ -670,7 +670,7 @@ const App: React.FC = () => {
                         <ProjectGrid>
 
                         <ProjectCard>
-                            <ProjectImage src="iFoodBee2.jpg" alt="Project 1" />
+                            <ProjectImage src={`${import.meta.env.BASE_URL}iFoodBee2.jpg`} alt="Project 1" />
                             <ProjectContent>
                               <h3>Food Waste Reduction Platform Design
                               </h3>
@@ -685,7 +685,7 @@ const App: React.FC = () => {
                           </ProjectCard>
 
                         <ProjectCard>
-                            <ProjectImage src="Adulthood2.jpg" alt="Adulthood" />
+                            <ProjectImage src={`${import.meta.env.BASE_URL}Adulthood2.jpg`} alt="Adulthood" />
                             <ProjectContent>
                               <h3>FigBuild2025 Design Hackathon
                               </h3>
@@ -699,7 +699,7 @@ const App: React.FC = () => {
                           </ProjectCard>
 
                         <ProjectCard>
-                            <ProjectImage src="ihubdemoday.jpg" alt="Project 2" />
+                            <ProjectImage src={`${import.meta.env.BASE_URL}ihubdemoday.jpg`} alt="Project 2" />
                             <ProjectContent>
                               <h3>Club Event Visual Design & Planning</h3>
                               <p>
@@ -713,7 +713,7 @@ const App: React.FC = () => {
                           </ProjectCard>
 
                           <ProjectCard>
-                            <ProjectImage src="Project1.jpg" alt="Project 1" />
+                            <ProjectImage src={`${import.meta.env.BASE_URL}Project1.jpg`} alt="Project 1" />
                             <ProjectContent>
                               <h3>AI-Powered Image Classifier with PyTorch
                               </h3>
@@ -728,7 +728,7 @@ const App: React.FC = () => {
                           </ProjectCard>
 
                           <ProjectCard>
-                            <ProjectImage src="mesawebsite.png" alt="Project 2" />
+                            <ProjectImage src={`${import.meta.env.BASE_URL}mesawebsite.png`} alt="Project 2" />
                             <ProjectContent>
                               <h3>Non-Profit Organization Website Design</h3>
                               <p>
@@ -752,7 +752,7 @@ const App: React.FC = () => {
                         <AchievementItem>
                             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '0.5rem' }}>
                               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                                <img src="Codepath.png" alt="Codepath Logo" style={{ width: 40, height: 40, borderRadius: 8, background: '#fff' }} />
+                                <img src={`${import.meta.env.BASE_URL}Codepath.png`} alt="Codepath Logo" style={{ width: 40, height: 40, borderRadius: 8, background: '#fff' }} />
                                 <h3 style={{ fontFamily: "'Baloo Chettan 2', 'Montserrat', Arial, sans-serif", fontWeight: 600, fontSize: '1.25rem', color: '#222', margin: 0 }}>Intermediate Technical Interview Prep Completion</h3>
                               </div>
                               <div style={{ marginLeft: 58, marginTop: 4, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 0 }}>
@@ -764,7 +764,7 @@ const App: React.FC = () => {
                         <AchievementItem>
                             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '0.5rem' }}>
                               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                                <img src="iHubCompletion.jpeg" alt="I Hub Badge Logo" style={{ width: 40, height: 40, borderRadius: 8, background: '#fff' }} />
+                                <img src={`${import.meta.env.BASE_URL}iHubCompletion.jpeg`} alt="I Hub Badge Logo" style={{ width: 40, height: 40, borderRadius: 8, background: '#fff' }} />
                                 <h3 style={{ fontFamily: "'Baloo Chettan 2', 'Montserrat', Arial, sans-serif", fontWeight: 600, fontSize: '1.25rem', color: '#222', margin: 0 }}>Innovators Hub Launchpad S25 Completion Badge</h3>
                               </div>
                               <div style={{ marginLeft: 58, marginTop: 4, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 0 }}>
@@ -780,7 +780,7 @@ const App: React.FC = () => {
                           <AchievementItem>
                             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '0.5rem' }}>
                               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                                <img src="udacity.jpg" alt="Udacity Logo" style={{ width: 40, height: 40, borderRadius: 8, background: '#fff' }} />
+                                <img src={`${import.meta.env.BASE_URL}udacity.jpg`} alt="Udacity Logo" style={{ width: 40, height: 40, borderRadius: 8, background: '#fff' }} />
                                 <h3 style={{ fontFamily: "'Baloo Chettan 2', 'Montserrat', Arial, sans-serif", fontWeight: 600, fontSize: '1.25rem', color: '#222', margin: 0 }}>AWS - AI Programming with Python</h3>
                               </div>
                               <div style={{ marginLeft: 58, marginTop: 4, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 0 }}>
@@ -796,7 +796,7 @@ const App: React.FC = () => {
                           <AchievementItem>
                             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '0.5rem' }}>
                               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                                <img src="Google.png" alt="Google Logo" style={{ width: 40, height: 40, borderRadius: 8, background: '#fff' }} />
+                                <img src={`${import.meta.env.BASE_URL}Google.png`} alt="Google Logo" style={{ width: 40, height: 40, borderRadius: 8, background: '#fff' }} />
                                 <h3 style={{ fontFamily: "'Baloo Chettan 2', 'Montserrat', Arial, sans-serif", fontWeight: 600, fontSize: '1.25rem', color: '#222', margin: 0 }}>Google UX Design Specialization</h3>
                               </div>
                               <div style={{ marginLeft: 58, marginTop: 4, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 0 }}>
@@ -813,7 +813,7 @@ const App: React.FC = () => {
                           <AchievementItem>
                             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '0.5rem' }}>
                               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                                <img src="awis.jpg" alt="AWIS Logo" style={{ width: 40, height: 40, borderRadius: 8, background: '#fff', objectFit: 'contain' }} />
+                                <img src={`${import.meta.env.BASE_URL}awis.jpg`} alt="AWIS Logo" style={{ width: 40, height: 40, borderRadius: 8, background: '#fff', objectFit: 'contain' }} />
                                 <h3 style={{ fontFamily: "'Baloo Chettan 2', 'Montserrat', Arial, sans-serif", fontWeight: 600, fontSize: '1.25rem', color: '#222', margin: 0 }}>Seattle Association for Women in Science (AWIS) Scholarship</h3>
                               </div>
                               <div style={{ marginLeft: 58, marginTop: 4, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 0 }}>
@@ -827,7 +827,7 @@ const App: React.FC = () => {
                           <AchievementItem>
                             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '0.5rem' }}>
                               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                                <img src="wsos.png" alt="WSOS Logo" style={{ width: 40, height: 40, borderRadius: 8, background: '#fff', objectFit: 'contain' }} />
+                                <img src={`${import.meta.env.BASE_URL}wsos.png`} alt="WSOS Logo" style={{ width: 40, height: 40, borderRadius: 8, background: '#fff', objectFit: 'contain' }} />
                                 <h3 style={{ fontFamily: "'Baloo Chettan 2', 'Montserrat', Arial, sans-serif", fontWeight: 600, fontSize: '1.25rem', color: '#222', margin: 0 }}>Baccalaureate Scholarship</h3>
                               </div>
                               <div style={{ marginLeft: 58, marginTop: 4, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 0 }}>
