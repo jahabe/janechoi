@@ -295,7 +295,7 @@ const Hero = () => {
           strong technical background, passionate about building products that solve pain points for someone. 
           </Description>
         </TextContainer>
-        <SocialLinks>
+        <SocialLinks>gi
           <SocialLink href="https://www.linkedin.com/in/jane026/" target="_blank" rel="noopener noreferrer">
             <FaLinkedin />
           </SocialLink>
