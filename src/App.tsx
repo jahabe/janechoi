@@ -510,13 +510,12 @@ const App: React.FC = () => {
                             <RowTitle>Technical Skills</RowTitle>
                             <SkillsList>
                               <SkillItem>Python</SkillItem>
-                              <SkillItem>C++</SkillItem>
+                              <SkillItem>C/C++</SkillItem>
                               <SkillItem>Java</SkillItem>
-                              <SkillItem>Machine Learning</SkillItem>
-                              <SkillItem>Deep Learning</SkillItem>
-                              <SkillItem>Data Analysis</SkillItem>
-                              <SkillItem>Generative AI</SkillItem>
-                              <SkillItem>Git/GitHub</SkillItem>
+                              <SkillItem>HTML</SkillItem>
+                              <SkillItem>CSS</SkillItem>
+                              <SkillItem>JavaScript</SkillItem>
+                              <SkillItem>TypeScript</SkillItem>
                               <SkillItem>SQL</SkillItem>
                             </SkillsList>
                           </SkillRow>
@@ -525,15 +524,12 @@ const App: React.FC = () => {
                             <RowTitle>Soft Skills</RowTitle>
                             <SkillsList>
                               <SkillItem>Adaptability</SkillItem>
-                              <SkillItem>Data Storytelling</SkillItem>
                               <SkillItem>Continuous Learning</SkillItem>
                               <SkillItem>Leadership</SkillItem>
-                              <SkillItem>Continuous Learning</SkillItem>
                               <SkillItem>Teamwork</SkillItem>
                               <SkillItem>Problem Solving</SkillItem>
                               <SkillItem>Critical Thinking</SkillItem>
                               <SkillItem>Communication</SkillItem>
-                              <SkillItem>Cross-functional Teamwork</SkillItem>
                             </SkillsList>
                           </SkillRow>
                         </SkillsGrid>
