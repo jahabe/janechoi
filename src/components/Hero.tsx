@@ -32,7 +32,7 @@ const ProfileImageSection = styled.div`
     height: 160px;
   }
   @media (max-width: 480px) {
-    height: 140px;
+    height: 90px;
   }
 
   img {
@@ -68,6 +68,15 @@ const DecorativeElementsContainer = styled.div`
     margin: 3rem auto ${({ theme }) => theme.spacing.lg} auto;
     padding: 0 ${({ theme }) => theme.spacing.md};
   }
+
+  @media (max-width: 768px) {
+   flex-direction: column;   /* STACK downward */
+   align-items: center;
+   justify-content: center;
+   gap: 1.5rem;
+   margin-top: 5rem;
+  }
+
   @media (max-width: 600px) {
     flex-direction: column;
     gap: ${({ theme }) => theme.spacing.md};
@@ -205,9 +214,12 @@ const MascotContainer = styled.div`
   user-select: none;
   @media (max-width: 768px) {
     gap: 0.75rem;
+    padding-left: 0;
   }
   @media (max-width: 600px) {
     justify-content: center;
+    margin-bottom: 0;
+    padding-left: 0;
   }
 `;
 
@@ -216,12 +228,12 @@ const MascotImage = styled.img`
   max-width: 120px;
   height: auto;
   @media (max-width: 768px) {
-    width: 80px;
+    width: 70px;
     max-width: 70px;
   }
   @media (max-width: 480px) {
-    width: 60px;
-    max-width: 60px;
+    width: 55px;
+    max-width: 55px;
   }
 `;
 
