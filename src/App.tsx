@@ -767,7 +767,7 @@ const App: React.FC = () => {
                       </ContentWrapper>
                     </Section>
 
-                    <Section id="Extracurriculars">
+                    <Section id="extracurriculars">
                       <ContentWrapper>
                         <SectionTitle>Extracurriculars</SectionTitle>
                         <ExperienceItem>

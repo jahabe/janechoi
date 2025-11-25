@@ -130,9 +130,10 @@ const Navbar: React.FC = () => {
       </MenuButton>
       <NavLinks isOpen={isMenuOpen}>
         <NavAnchor href="#about" onClick={e => handleNavClick(e, 'about')}>About Me</NavAnchor>
-        <NavAnchor href="#experience" onClick={e => handleNavClick(e, 'experience')}>Experience</NavAnchor>
         <NavAnchor href="#education" onClick={e => handleNavClick(e, 'education')}>Education</NavAnchor>
+        <NavAnchor href="#experience" onClick={e => handleNavClick(e, 'experience')}>Experience</NavAnchor>
         <NavAnchor href="#projects" onClick={e => handleNavClick(e, 'projects')}>Projects</NavAnchor>
+        <NavAnchor href="#extracurriculars" onClick={e => handleNavClick(e, 'extracurriculars')}>Extracurriculars</NavAnchor>
         <NavAnchor href="#achievements" onClick={e => handleNavClick(e, 'achievements')}>Achievements</NavAnchor>
       </NavLinks>
     </NavbarContainer>
