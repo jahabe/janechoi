@@ -23,3 +23,14 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+# Ignore image files in root directory (they should be in public/)
+*.jpg
+*.png
+*.jpeg
+*.svg
+!public/**/*.jpg
+!public/**/*.png
+!public/**/*.jpeg
+!public/**/*.svg
+!src/**/*.svg
