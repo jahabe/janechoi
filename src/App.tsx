@@ -286,24 +286,58 @@ const AchievementList = styled.ul`
   list-style: none;
   padding: 0;
   width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: ${({ theme }) => theme.spacing.lg};
+  justify-items: center; /* center cards within columns */
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 700px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const AchievementItem = styled.li`
   background-color: ${({ theme }) => theme.colors.white};
-  margin-bottom: ${({ theme }) => theme.spacing.md};
+  margin: 0; /* grid provides spacing */
   padding: ${({ theme }) => theme.spacing.lg};
   border-radius: 8px;
   box-shadow: ${({ theme }) => theme.shadows.small};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   @media (max-width: 768px) {
     padding: ${({ theme }) => theme.spacing.md};
-    margin-bottom: ${({ theme }) => theme.spacing.sm};
   }
   h3 {
-    font-size: 1.25rem;
+    font-size: 1.05rem;
     @media (max-width: 768px) {
       font-size: 1.1rem;
     }
   }
+`;
+
+const AchievementLogo = styled.img`
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background: #fff;
+  object-fit: contain;
+  margin-bottom: ${({ theme }) => theme.spacing.sm};
+`;
+
+const AchievementMeta = styled.div`
+  color: #555;
+  font-size: 1rem;
+  margin-top: 6px;
+`;
+
+const AchievementIssued = styled.div`
+  color: #888;
+  font-size: 0.95rem;
+  margin-top: 6px;
 `;
 
 const Links = styled.a`
@@ -422,6 +456,17 @@ const SkillItem = styled.li`
   }
 `;
 
+// Smaller pill variant for inline use inside project cards
+const InlineSkillsList = styled(SkillsList)`
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+`;
+
+const SmallSkillItem = styled(SkillItem)`
+  font-size: 0.80rem; // slightly smaller than paragraph
+  padding: 0.35rem 0.8rem;
+`;
+
 const CredentialButton = styled.a`
   display: inline-flex;
   align-items: center;
@@ -432,7 +477,7 @@ const CredentialButton = styled.a`
   font-weight: 500;
   color: #222;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 0.75rem;
   background: #fff;
   transition: background 0.2s, border-color 0.2s, color 0.2s;
   @media (max-width: 768px) {
@@ -567,28 +612,17 @@ const App: React.FC = () => {
                         <SectionTitle>Skills</SectionTitle>
                         <SkillsGrid>
                           <SkillRow>
-                            <RowTitle>Technical Skills</RowTitle>
+                            <RowTitle>Languages</RowTitle>
                             <SkillsList>
                               <SkillItem>Python</SkillItem>
                               <SkillItem>C/C++</SkillItem>
                               <SkillItem>Java</SkillItem>
+                              <SkillItem>Go</SkillItem>
                               <SkillItem>HTML</SkillItem>
                               <SkillItem>CSS</SkillItem>
                               <SkillItem>JavaScript</SkillItem>
                               <SkillItem>TypeScript</SkillItem>
                               <SkillItem>SQL</SkillItem>
-                            </SkillsList>
-                          </SkillRow>
-                          
-                          <SkillRow>
-                            <RowTitle>Soft Skills</RowTitle>
-                            <SkillsList>
-                              <SkillItem>Adaptability</SkillItem>
-                              <SkillItem>Continuous Learning</SkillItem>
-                              <SkillItem>Leadership</SkillItem>
-                              <SkillItem>Problem Solving</SkillItem>
-                              <SkillItem>Critical Thinking</SkillItem>
-                              <SkillItem>Communication</SkillItem>
                             </SkillsList>
                           </SkillRow>
                         </SkillsGrid>
@@ -692,13 +726,18 @@ const App: React.FC = () => {
                         <ProjectGrid>
 
                         <ProjectCard>
-                            <ProjectImage src="iFoodBee2.jpg" alt="Project 1" />
+                            <ProjectImage src="iFoodBee3.jpg" alt="Project 1" />
                             <ProjectContent>
                               <h3>Food Waste Reduction Platform Design
                               </h3>
                               <p>
                                 Jan 2025 - Feb 2025
                               </p>
+                              <InlineSkillsList>
+                                <SmallSkillItem>UX Research</SmallSkillItem>
+                                <SmallSkillItem>Visual Storytelling</SmallSkillItem>
+                                <SmallSkillItem>Product Design</SmallSkillItem>
+                              </InlineSkillsList>
                               <p>
                               Designed iFoodBee's web platform to help reduce food waste and support local businesses through user-friendly UX and visual storytelling.
                               </p>
@@ -707,16 +746,22 @@ const App: React.FC = () => {
                           </ProjectCard>
 
                         <ProjectCard>
-                            <ProjectImage src="Adulthood2.jpg" alt="Adulthood" />
+                            <ProjectImage src="AdultReady_3.jpg" alt="AdultReady" />
                             <ProjectContent>
                               <h3>FigBuild2025 Design Hackathon
                               </h3>
                               <p>
                                 Apr 2025
                               </p>
+                              <InlineSkillsList>
+                                <SmallSkillItem>UI/UX</SmallSkillItem>
+                                <SmallSkillItem>Figma</SmallSkillItem>
+                                <SmallSkillItem>Product Management</SmallSkillItem>
+                              </InlineSkillsList>
                               <p>
-                                Designed Adulthood, an AI-powered app that helps young adults (18+) navigate real-world challenges like taxes, L&I, and car accidents through an instant-answer chatbot and a built-in learning center.
+                                Designed AdultReady, an AI-powered app that helps young adults (18+) navigate real-world challenges like taxes, L&I, and car accidents through an instant-answer chatbot and a built-in learning center.
                               </p>
+                              <ProjectButton className="project-btn" href="https://www.youtube.com/watch?v=ijYZi1Df0zM" target="_blank" rel="noopener noreferrer">👀</ProjectButton>
                             </ProjectContent>
                           </ProjectCard>
 
@@ -727,6 +772,11 @@ const App: React.FC = () => {
                               <p>
                                Apr 2025 - Jun 2025
                               </p>
+                              <InlineSkillsList>
+                                <SmallSkillItem>Branding</SmallSkillItem>
+                                <SmallSkillItem>Project Coordination</SmallSkillItem>
+                                <SmallSkillItem>Promotional Design</SmallSkillItem>
+                              </InlineSkillsList>
                               <p>
                               Led the full design direction for Demo Day and a series of company tours. Created all event visuals and coordinated with club officers to plan the schedule and timeline.
                               </p>
@@ -742,6 +792,11 @@ const App: React.FC = () => {
                               <p>
                                 Jan 2025 - Feb 2025
                               </p>
+                              <InlineSkillsList>
+                                <SmallSkillItem>Deep Learning</SmallSkillItem>
+                                <SmallSkillItem>PyTorch</SmallSkillItem>
+                                <SmallSkillItem>Data Preprocessing & Model Evaluation</SmallSkillItem>
+                              </InlineSkillsList>
                               <p>
                               A VGG16-based image classifier built with PyTorch to learn deep learning through hands-on training and prediction.
                               </p>
@@ -752,10 +807,15 @@ const App: React.FC = () => {
                           <ProjectCard>
                             <ProjectImage src="mesawebsite.png" alt="Project 2" />
                             <ProjectContent>
-                              <h3>Non-Profit Organization Website Design</h3>
+                              <h3>MESA Website Design</h3>
                               <p>
                                 Jun 2024 - Aug 2024
                               </p>
+                              <InlineSkillsList>
+                                <SmallSkillItem>UI/UX</SmallSkillItem>
+                                <SmallSkillItem>Web Design</SmallSkillItem>
+                                <SmallSkillItem>Design Research</SmallSkillItem>
+                              </InlineSkillsList>
                               <p>
                               Redesigned the Edmonds College MESA website to improve user interaction and layout.
                               </p>
@@ -857,94 +917,58 @@ const App: React.FC = () => {
                       <ContentWrapper>
                         <SectionTitle>Achievements & Awards</SectionTitle>
                         <AchievementList>
-                        <AchievementItem>
-                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '0.5rem' }}>
-                              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                                <img src="Codepath.png" alt="Codepath Logo" style={{ width: 40, height: 40, borderRadius: 8, background: '#fff' }} />
-                                <h3 style={{ fontFamily: "'Baloo Chettan 2', 'Montserrat', Arial, sans-serif", fontWeight: 600, fontSize: '1.25rem', color: '#222', margin: 0 }}>Intermediate Technical Interview Prep Completion</h3>
-                              </div>
-                              <div style={{ marginLeft: 58, marginTop: 4, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 0 }}>
-                                <div style={{ color: '#555', fontSize: '1rem' }}>Codepath*org</div>
-                                <div style={{ color: '#888', fontSize: '0.95rem', marginTop: 6 }}>Issued Aug 2025</div>
-                              </div>
-                            </div>
-                          </AchievementItem>
-                        <AchievementItem>
-                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '0.5rem' }}>
-                              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                                <img src="iHubCompletion.jpeg" alt="I Hub Badge Logo" style={{ width: 40, height: 40, borderRadius: 8, background: '#fff' }} />
-                                <h3 style={{ fontFamily: "'Baloo Chettan 2', 'Montserrat', Arial, sans-serif", fontWeight: 600, fontSize: '1.25rem', color: '#222', margin: 0 }}>Innovators Hub Launchpad S25 Completion Badge</h3>
-                              </div>
-                              <div style={{ marginLeft: 58, marginTop: 4, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 0 }}>
-                                <div style={{ color: '#555', fontSize: '1rem' }}>Innovators Hub (1%)</div>
-                                <div style={{ color: '#888', fontSize: '0.95rem', marginTop: 6 }}>Issued Jun 2025</div>
-                                <CredentialButton href="https://www.linkedin.com/in/jane026/overlay/1749331071596/single-media-viewer/?profileId=ACoAAEKJWnUBiAinhTNzQjlo5oQPwJgDdF1FnxQ" target="_blank" rel="noopener noreferrer">
-                                  Show credential
-                                  <svg style={{ marginLeft: 8 }} xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"><path fill="#222" d="M14.293 5.293a1 1 0 0 1 1.414 0l5 5a1 1 0 0 1 0 1.414l-5 5a1 1 0 1 1-1.414-1.414L17.586 12H5a1 1 0 1 1 0-2h12.586l-3.293-3.293a1 1 0 0 1 0-1.414z"/></svg>
-                                </CredentialButton>
-                              </div>
-                            </div>
+                          <AchievementItem>
+                            <AchievementLogo src="Codepath.png" alt="Codepath Logo" />
+                            <h3>Intermediate Technical Interview Prep Completion</h3>
+                            <AchievementMeta>Codepath*org</AchievementMeta>
+                            <AchievementIssued>Issued Aug 2025</AchievementIssued>
                           </AchievementItem>
                           <AchievementItem>
-                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '0.5rem' }}>
-                              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                                <img src="udacity.jpg" alt="Udacity Logo" style={{ width: 40, height: 40, borderRadius: 8, background: '#fff' }} />
-                                <h3 style={{ fontFamily: "'Baloo Chettan 2', 'Montserrat', Arial, sans-serif", fontWeight: 600, fontSize: '1.25rem', color: '#222', margin: 0 }}>AWS - AI Programming with Python</h3>
-                              </div>
-                              <div style={{ marginLeft: 58, marginTop: 4, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 0 }}>
-                                <div style={{ color: '#555', fontSize: '1rem' }}>Udacity</div>
-                                <div style={{ color: '#888', fontSize: '0.95rem', marginTop: 6 }}>Issued Jan 2025</div>
-                                <CredentialButton href="https://www.udacity.com/certificate/e/213d70a6-8b40-11ef-a0dc-83ddb9ef31d2" target="_blank" rel="noopener noreferrer">
-                                  Show credential
-                                  <svg style={{ marginLeft: 8 }} xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"><path fill="#222" d="M14.293 5.293a1 1 0 0 1 1.414 0l5 5a1 1 0 0 1 0 1.414l-5 5a1 1 0 1 1-1.414-1.414L17.586 12H5a1 1 0 1 1 0-2h12.586l-3.293-3.293a1 1 0 0 1 0-1.414z"/></svg>
-                                </CredentialButton>
-                              </div>
-                            </div>
+                            <AchievementLogo src="iHubCompletion.jpeg" alt="I Hub Badge Logo" />
+                            <h3>Innovators Hub Launchpad S25 Completion Badge</h3>
+                            <AchievementMeta>Innovators Hub (1%)</AchievementMeta>
+                            <AchievementIssued>Issued Jun 2025</AchievementIssued>
+                            <CredentialButton href="https://www.linkedin.com/in/jane026/overlay/1749331071596/single-media-viewer/?profileId=ACoAAEKJWnUBiAinhTNzQjlo5oQPwJgDdF1FnxQ" target="_blank" rel="noopener noreferrer">
+                              Show credential
+                              <svg style={{ marginLeft: 8 }} xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"><path fill="#222" d="M14.293 5.293a1 1 0 0 1 1.414 0l5 5a1 1 0 0 1 0 1.414l-5 5a1 1 0 1 1-1.414-1.414L17.586 12H5a1 1 0 1 1 0-2h12.586l-3.293-3.293a1 1 0 0 1 0-1.414z"/></svg>
+                            </CredentialButton>
                           </AchievementItem>
                           <AchievementItem>
-                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '0.5rem' }}>
-                              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                                <img src="Google.png" alt="Google Logo" style={{ width: 40, height: 40, borderRadius: 8, background: '#fff' }} />
-                                <h3 style={{ fontFamily: "'Baloo Chettan 2', 'Montserrat', Arial, sans-serif", fontWeight: 600, fontSize: '1.25rem', color: '#222', margin: 0 }}>Google UX Design Specialization</h3>
-                              </div>
-                              <div style={{ marginLeft: 58, marginTop: 4, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 0 }}>
-                                <div style={{ color: '#555', fontSize: '1rem' }}>Google</div>
-                                <div style={{ color: '#888', fontSize: '0.95rem', marginTop: 6 }}>Issued Jul 2024</div>
-                                <div style={{ color: '#888', fontSize: '0.95rem', marginTop: 6 }}>Credential ID 5P25PKM6LN54</div>
-                                <CredentialButton href="https://www.coursera.org/account/accomplishments/specialization/certificate/5P25PKM6LN54" target="_blank" rel="noopener noreferrer">
-                                  Show credential
-                                  <svg style={{ marginLeft: 8 }} xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"><path fill="#222" d="M14.293 5.293a1 1 0 0 1 1.414 0l5 5a1 1 0 0 1 0 1.414l-5 5a1 1 0 1 1-1.414-1.414L17.586 12H5a1 1 0 1 1 0-2h12.586l-3.293-3.293a1 1 0 0 1 0-1.414z"/></svg>
-                                </CredentialButton>
-                              </div>
-                            </div>
+                            <AchievementLogo src="udacity.jpg" alt="Udacity Logo" />
+                            <h3>AWS - AI Programming with Python</h3>
+                            <AchievementMeta>Udacity</AchievementMeta>
+                            <AchievementIssued>Issued Jan 2025</AchievementIssued>
+                            <CredentialButton href="https://www.udacity.com/certificate/e/213d70a6-8b40-11ef-a0dc-83ddb9ef31d2" target="_blank" rel="noopener noreferrer">
+                              Show credential
+                              <svg style={{ marginLeft: 8 }} xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"><path fill="#222" d="M14.293 5.293a1 1 0 0 1 1.414 0l5 5a1 1 0 0 1 0 1.414l-5 5a1 1 0 1 1-1.414-1.414L17.586 12H5a1 1 0 1 1 0-2h12.586l-3.293-3.293a1 1 0 0 1 0-1.414z"/></svg>
+                            </CredentialButton>
                           </AchievementItem>
                           <AchievementItem>
-                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '0.5rem' }}>
-                              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                                <img src="awis.jpg" alt="AWIS Logo" style={{ width: 40, height: 40, borderRadius: 8, background: '#fff', objectFit: 'contain' }} />
-                                <h3 style={{ fontFamily: "'Baloo Chettan 2', 'Montserrat', Arial, sans-serif", fontWeight: 600, fontSize: '1.25rem', color: '#222', margin: 0 }}>Seattle Association for Women in Science (AWIS) Scholarship</h3>
-                              </div>
-                              <div style={{ marginLeft: 58, marginTop: 4, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 0 }}>
-                                <div style={{ color: '#555', fontSize: '1rem', fontFamily: 'Montserrat, Arial, sans-serif', fontWeight: 400 }}>
-                                  <Links href="https://seattleawis.org/" target="_blank" rel="noopener noreferrer" style={{ fontFamily: 'inherit', fontWeight: 'inherit' }}>Seattle AWIS</Links>
-                                </div>
-                                <div style={{ color: '#888', fontSize: '0.95rem', marginTop: 6 }}>Issued May 2024</div>
-                              </div>
-                            </div>
+                            <AchievementLogo src="Google.png" alt="Google Logo" />
+                            <h3>Google UX Design Specialization</h3>
+                            <AchievementMeta>Google</AchievementMeta>
+                            <AchievementIssued>Issued Jul 2024</AchievementIssued>
+                            <div style={{ color: '#888', fontSize: '0.95rem', marginTop: 6 }}>Credential ID 5P25PKM6LN54</div>
+                            <CredentialButton href="https://www.coursera.org/account/accomplishments/specialization/certificate/5P25PKM6LN54" target="_blank" rel="noopener noreferrer">
+                              Show credential
+                              <svg style={{ marginLeft: 8 }} xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"><path fill="#222" d="M14.293 5.293a1 1 0 0 1 1.414 0l5 5a1 1 0 0 1 0 1.414l-5 5a1 1 0 1 1-1.414-1.414L17.586 12H5a1 1 0 1 1 0-2h12.586l-3.293-3.293a1 1 0 0 1 0-1.414z"/></svg>
+                            </CredentialButton>
                           </AchievementItem>
                           <AchievementItem>
-                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '0.5rem' }}>
-                              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                                <img src="wsos.png" alt="WSOS Logo" style={{ width: 40, height: 40, borderRadius: 8, background: '#fff', objectFit: 'contain' }} />
-                                <h3 style={{ fontFamily: "'Baloo Chettan 2', 'Montserrat', Arial, sans-serif", fontWeight: 600, fontSize: '1.25rem', color: '#222', margin: 0 }}>Baccalaureate Scholarship</h3>
-                              </div>
-                              <div style={{ marginLeft: 58, marginTop: 4, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 0 }}>
-                                <div style={{ color: '#555', fontSize: '1rem', fontFamily: 'Montserrat, Arial, sans-serif', fontWeight: 400 }}>
-                                  <Links href="https://waopportunityscholarship.org/" target="_blank" rel="noopener noreferrer" style={{ fontFamily: 'inherit', fontWeight: 'inherit' }}>Washington State Opportunity Scholarship</Links>
-                                </div>
-                                <div style={{ color: '#888', fontSize: '0.95rem', marginTop: 6 }}>Issued Sep 2023</div>
-                              </div>
-                            </div>
+                            <AchievementLogo src="awis.jpg" alt="AWIS Logo" />
+                            <h3>Seattle Association for Women in Science (AWIS) Scholarship</h3>
+                            <AchievementMeta>
+                              <Links href="https://seattleawis.org/" target="_blank" rel="noopener noreferrer">Seattle AWIS</Links>
+                            </AchievementMeta>
+                            <AchievementIssued>Issued May 2024</AchievementIssued>
+                          </AchievementItem>
+                          <AchievementItem>
+                            <AchievementLogo src="wsos.png" alt="WSOS Logo" />
+                            <h3>Baccalaureate Scholarship</h3>
+                            <AchievementMeta>
+                              <Links href="https://waopportunityscholarship.org/" target="_blank" rel="noopener noreferrer">Washington State Opportunity Scholarship</Links>
+                            </AchievementMeta>
+                            <AchievementIssued>Issued Sep 2023</AchievementIssued>
                           </AchievementItem>
                         </AchievementList>
                       </ContentWrapper>
