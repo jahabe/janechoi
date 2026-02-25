@@ -577,7 +577,7 @@ const App: React.FC = () => {
                           <AboutLayout>
                             {/* LEFT: photo */}
                             <AboutImage
-                              src="Jane- pp.jpg"   // 🔹 put your actual file name here (no typo, same as in /public)
+                              src="Jane- pp.jpg"
                               alt="Jane Choi"
                             />
 
