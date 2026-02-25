@@ -585,7 +585,7 @@ const App: React.FC = () => {
                             <AboutText>
                               <p>
                                 I’m a Computer Science & Software Engineering student at the University of Washington,
-                                graduating in June 2026.
+                                graduating in March 2027.
                               </p>
 
                               <p>
