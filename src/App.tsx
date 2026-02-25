@@ -638,7 +638,7 @@ const App: React.FC = () => {
                           </ExperienceLogo>
                           <div>
                             <ExperienceTitle>Bachelor of Science in Computer Science & Software Engineering</ExperienceTitle>
-                            <ExperienceDate>University of Washington, June 2026</ExperienceDate>
+                            <ExperienceDate>University of Washington, March 2027(Expected)</ExperienceDate>
                             <p>
                               Extracurricular:
                             </p>
