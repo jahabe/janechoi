@@ -685,7 +685,7 @@ const App: React.FC = () => {
                             <img src="dais.jpg" alt="DAIS Lab Logo" /> 
                           </ExperienceLogo>
                           <div>
-                            <ExperienceTitle>Research Software Engineer (Contract) @ <Links href="https://sites.google.com/uw.edu/dais-uw" target="_blank" rel="noopener noreferrer">DAIS Lab</Links></ExperienceTitle>
+                            <ExperienceTitle>Undergrad Research MLE(Contract) @ <Links href="https://sites.google.com/uw.edu/dais-uw" target="_blank" rel="noopener noreferrer">DAIS Lab</Links></ExperienceTitle>
                             <ExperienceDate>May 2025 - Present</ExperienceDate>
                             <p>
                              Dr. Si’s Data Analysis & Intelligent Systems (DAIS) Group - 
@@ -699,7 +699,7 @@ const App: React.FC = () => {
                           </ExperienceLogo>
                           <div>
                             <ExperienceTitle>Co-Founder @ <Links href="https://www.uwinnovators.com/index.html" target="_blank" rel="noopener noreferrer">Innovators Hub</Links></ExperienceTitle>
-                            <ExperienceDate>Sep 2024 - Present</ExperienceDate>
+                            <ExperienceDate>Sep 2024 - Jun 2026</ExperienceDate>
                             <p>
                             A 200+ member tech club for student innovators/builders.
                             </p>
