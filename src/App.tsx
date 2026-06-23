@@ -577,29 +577,29 @@ const App: React.FC = () => {
                           <AboutLayout>
                             {/* LEFT: photo */}
                             <AboutImage
-                              src="Jane- pp.jpg"   // 🔹 put your actual file name here (no typo, same as in /public)
+                              src="Jane- pp.png"
                               alt="Jane Choi"
                             />
 
                             {/* RIGHT: text */}
                             <AboutText>
                               <p>
-                                I’m a Computer Science & Software Engineering student at the University of Washington,
-                                graduating in June 2026.
+                                I’m a Computer Science & Software Engineering student at the University of 
+                                Washington, graduating in Winter 2027.
                               </p>
 
                               <p>
-                                I’m currently involved in two research projects: (1) Data Analysis & Intelligent Systems (DAIS)
-                                Lab and (2) Custom Keyset Skins for the Microsoft Surface Laptop. Even though these projects
-                                are very different, I joined both because I love learning new fields and understanding how
-                                technology can improve someone’s life.
+                                Currently involved in the Data Analysis & Intelligent Systems (DAIS) 
+                                Lab and the MLH Fellowship program in partnership with Meta for the 
+                                production engineering track.
                               </p>
 
                               <p>
-                                At my core, I’m driven by people. I constantly think about real pain points in daily life and ask:
-                                “How can this be solved? What tools do I need to build it? What should I learn next?” I’m a
-                                curious learner, a user-driven thinker, and a problem solver who cares deeply about creating
-                                meaningful, human-centered solutions.
+                                At my core, I’m driven by people. I constantly think about real pain 
+                                points in daily life and ask: “How can this be solved? What tools do I 
+                                need to build it? What should I learn next?” I’m a curious learner, 
+                                a user-driven thinker, and a problem solver who cares deeply about 
+                                creating meaningful, human-centered solutions.
                               </p>
                             </AboutText>
                           </AboutLayout>
@@ -638,13 +638,13 @@ const App: React.FC = () => {
                           </ExperienceLogo>
                           <div>
                             <ExperienceTitle>Bachelor of Science in Computer Science & Software Engineering</ExperienceTitle>
-                            <ExperienceDate>University of Washington, June 2026</ExperienceDate>
+                            <ExperienceDate>University of Washington, Winter 2027</ExperienceDate>
                             <p>
                               Extracurricular:
                             </p>
                             <ul>
-                              <li>CSS Course Grader</li>
-                              <li>Innovators Hub Student Club Associate Founder</li>
+                              <li>CS Grader/TA</li>
+                              <li>Innovators Hub Student Club Co-Founder</li>
                               <li>FigBuild2025 Design Hackathon Participant</li>
                               <li>Organizing Committee Member, UWB Hackathon: Save The World!</li>
                             </ul>
@@ -658,26 +658,38 @@ const App: React.FC = () => {
                         <SectionTitle>Experience</SectionTitle>
                         <ExperienceItem>
                           <ExperienceLogo>
+                            <img src="meta.png" alt="Meta Logo" />
+                          </ExperienceLogo>
+                          <div>
+                            <ExperienceTitle>Production Engineering Fellow @ Meta x Major League Hacking </ExperienceTitle>
+                            <ExperienceDate>Jun 2026 - Sep 2026</ExperienceDate>
+                            <p>
+                             Accepted into a selective 12-week fellowship focused on production engineering, 
+                             site reliability, and systems infrastructure in collaboration with Meta.
+                            </p>
+                          </div>
+                        </ExperienceItem>                        <ExperienceItem>
+                          <ExperienceLogo>
                             <img src="ms.png" alt="MS Logo" />
                           </ExperienceLogo>
                           <div>
-                            <ExperienceTitle>Software Lead @ University Research Project — Sponsored by Microsoft (Contract) </ExperienceTitle>
-                            <ExperienceDate>Nov 2025 - Present</ExperienceDate>
+                            <ExperienceTitle>Software Lead @ Microsoft (Capstone Project) </ExperienceTitle>
+                            <ExperienceDate>Nov 2025 - June 2026</ExperienceDate>
                             <p>
                              Working on Surface Laptop keyset skin technology.
                             </p>
-                            <p>Project duration: Nov 2025 - June 2026</p>
                           </div>
                         </ExperienceItem>
                         <ExperienceItem>
                           <ExperienceLogo>
-                            <img src="dais.jpg" alt="DAIS Lab Logo" />
+                            <img src="dais.jpg" alt="DAIS Lab Logo" /> 
                           </ExperienceLogo>
                           <div>
                             <ExperienceTitle>Research Software Engineer (Contract) @ <Links href="https://sites.google.com/uw.edu/dais-uw" target="_blank" rel="noopener noreferrer">DAIS Lab</Links></ExperienceTitle>
                             <ExperienceDate>May 2025 - Present</ExperienceDate>
                             <p>
-                             Dr. Si’s Data Analysis & Intelligent Systems (DAIS) Group - DeepTracer Generative AI Team
+                             Dr. Si’s Data Analysis & Intelligent Systems (DAIS) Group - 
+                             DeepTracer Generative AI Team
                             </p>
                           </div>
                         </ExperienceItem>
@@ -686,7 +698,7 @@ const App: React.FC = () => {
                           <img src="ihub.jpg" alt="Innovators Hub Logo" />
                           </ExperienceLogo>
                           <div>
-                            <ExperienceTitle>Program Operations Manager @ <Links href="https://www.uwinnovators.com/index.html" target="_blank" rel="noopener noreferrer">Innovators Hub</Links></ExperienceTitle>
+                            <ExperienceTitle>Co-Founder @ <Links href="https://www.uwinnovators.com/index.html" target="_blank" rel="noopener noreferrer">Innovators Hub</Links></ExperienceTitle>
                             <ExperienceDate>Sep 2024 - Present</ExperienceDate>
                             <p>
                             A 200+ member tech club for student innovators/builders.
@@ -698,10 +710,12 @@ const App: React.FC = () => {
                             <img src="idea_enterprises_llc_logo.jpg" alt="IDEA logo" />
                           </ExperienceLogo>
                           <div>
-                            <ExperienceTitle>Technical UX Designer Intern @ <Links href="https://www.idea-vis.com/" target="_blank" rel="noopener noreferrer">IDEA Enterprises LLC</Links></ExperienceTitle>
+                            <ExperienceTitle> UX Intern @ <Links href="https://www.idea-vis.com/" target="_blank" rel="noopener noreferrer">IDEA Enterprises LLC</Links></ExperienceTitle>
                             <ExperienceDate>July 2025 - Sep 2025</ExperienceDate>
                             <p>
-                             Improved core user flows for an AI security platform and translated research insights into clear product specifications. Used competitive analysis, user interviews, and iterative prototyping to guide design decisions. 
+                             Improved core user flows for an AI security platform and translated 
+                             research insights into clear product specifications. Used competitive 
+                             analysis, user interviews, and iterative prototyping to guide design decisions. 
                             </p>
                           </div>
                         </ExperienceItem>
@@ -713,7 +727,8 @@ const App: React.FC = () => {
                             <ExperienceTitle>Web Designer Intern @ <Links href="https://www.billow.fun/" target="_blank" rel="noopener noreferrer">Billow</Links></ExperienceTitle>
                             <ExperienceDate>June 2025 - Sep 2025</ExperienceDate>
                             <p>
-                             Designed and developed a web platform for Billow, a platform that helps people find and book unique experiences. 
+                             Designed and developed a web platform for Billow, a platform that 
+                             helps people find and book unique experiences. 
                             </p>
                           </div>
                         </ExperienceItem>
@@ -724,6 +739,51 @@ const App: React.FC = () => {
                       <ContentWrapper>
                         <SectionTitle>Projects</SectionTitle>
                         <ProjectGrid>
+
+                        <ProjectCard>
+                            <ProjectImage src="socialmaxxing.jpg" alt="SocialMaxxing" />
+                            <ProjectContent>
+                              <h3>SocialMaxxing
+                              </h3>
+                              <p>
+                                Apr 2026
+                              </p>
+                              <InlineSkillsList>
+                                <SmallSkillItem>Git&GitHub</SmallSkillItem>
+                                <SmallSkillItem>C#</SmallSkillItem>
+                                <SmallSkillItem>Unity</SmallSkillItem>
+                              </InlineSkillsList>
+                              <p>
+                              Even aliens need to learn manners. 
+                              </p>
+                              <p>
+                              UWB Hacks 2026 - Theme in human experience
+                              </p>
+                              <ProjectButton className="project-btn" href="https://devpost.com/software/uwb-hacks-future" target="_blank" rel="noopener noreferrer">👀</ProjectButton>
+                            </ProjectContent>
+                          </ProjectCard>
+
+                        <ProjectCard>
+                            <ProjectImage src="datathon.png" alt="Datathon" />
+                            <ProjectContent>
+                              <h3>Seattle Accessibility & Mobility Data Visualization
+                              </h3>
+                              <p>
+                                Feb 2026
+                              </p>
+                              <InlineSkillsList>
+                                <SmallSkillItem>Data Visualization</SmallSkillItem>
+                                <SmallSkillItem>Data Analysis</SmallSkillItem>
+                                <SmallSkillItem>Tableau</SmallSkillItem>
+                              </InlineSkillsList>
+                              <p>
+                              Mapping Seattle's sidewalk accessibility gaps and quantifying mobility 
+                              friction against neighborhood vulnerability indicators to support 
+                              data-driven infrastructure investment prioritization.
+                              </p>
+                              <ProjectButton className="project-btn" href="https://vanilla-foxglove-275.notion.site/Identifying-and-Prioritizing-High-Impact-Sidewalk-Barriers-That-Disrupt-Everyday-Movement-in-Seattle-30118ef3ce6780098b85dd105821debf" target="_blank" rel="noopener noreferrer">👀</ProjectButton>
+                            </ProjectContent>
+                          </ProjectCard>
 
                         <ProjectCard>
                             <ProjectImage src="iFoodBee3.jpg" alt="Project 1" />
@@ -739,7 +799,8 @@ const App: React.FC = () => {
                                 <SmallSkillItem>Product Design</SmallSkillItem>
                               </InlineSkillsList>
                               <p>
-                              Designed iFoodBee's web platform to help reduce food waste and support local businesses through user-friendly UX and visual storytelling.
+                              Designed iFoodBee's web platform to help reduce food waste and support 
+                              local businesses through user-friendly UX and visual storytelling.
                               </p>
                               <ProjectButton className="project-btn" href="https://www.behance.net/gallery/228878415/iFoodBee-Web-Design-MockUp?lo=1750782022?share=1" target="_blank" rel="noopener noreferrer">👀</ProjectButton>
                             </ProjectContent>
@@ -759,7 +820,9 @@ const App: React.FC = () => {
                                 <SmallSkillItem>Product Management</SmallSkillItem>
                               </InlineSkillsList>
                               <p>
-                                Designed AdultReady, an AI-powered app that helps young adults (18+) navigate real-world challenges like taxes, L&I, and car accidents through an instant-answer chatbot and a built-in learning center.
+                                Designed AdultReady, an AI-powered app that helps young adults (18+) 
+                                navigate real-world challenges like taxes, L&I, and car accidents through 
+                                an instant-answer chatbot and a built-in learning center.
                               </p>
                               <ProjectButton className="project-btn" href="https://www.youtube.com/watch?v=ijYZi1Df0zM" target="_blank" rel="noopener noreferrer">👀</ProjectButton>
                             </ProjectContent>
@@ -778,7 +841,9 @@ const App: React.FC = () => {
                                 <SmallSkillItem>Promotional Design</SmallSkillItem>
                               </InlineSkillsList>
                               <p>
-                              Led the full design direction for Demo Day and a series of company tours. Created all event visuals and coordinated with club officers to plan the schedule and timeline.
+                              Led the full design direction for Demo Day and a series of company tours. 
+                              Created all event visuals and coordinated with club officers to plan the 
+                              schedule and timeline.
                               </p>
                               <ProjectButton className="project-btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7337213071590944769" target="_blank" rel="noopener noreferrer">👀</ProjectButton>
                             </ProjectContent>
@@ -798,7 +863,8 @@ const App: React.FC = () => {
                                 <SmallSkillItem>Data Preprocessing & Model Evaluation</SmallSkillItem>
                               </InlineSkillsList>
                               <p>
-                              A VGG16-based image classifier built with PyTorch to learn deep learning through hands-on training and prediction.
+                              A VGG16-based image classifier built with PyTorch to learn deep learning 
+                              through hands-on training and prediction.
                               </p>
                               <ProjectButton className="project-btn" href="https://github.com/jahabe/Image-Classifier" target="_blank" rel="noopener noreferrer">👀</ProjectButton>
                             </ProjectContent>
@@ -830,18 +896,36 @@ const App: React.FC = () => {
                     <Section id="extracurriculars">
                       <ContentWrapper>
                         <SectionTitle>Extracurriculars</SectionTitle>
+                                                <ExperienceItem>
+                          <ExperienceLogo>
+                          <img src="wsos.png" alt="WSOS Lab Logo" />
+                          </ExperienceLogo>
+                          <div>
+                            <ExperienceTitle>STEM Scholar Lead x 3  @ <Links href="https://waopportunityscholarship.org/" target="_blank" rel="noopener noreferrer">WSOS</Links></ExperienceTitle>
+                            <ExperienceDate>Oct 2024 - Present</ExperienceDate>
+                            <p>
+                            Led a cohort of 60+ scholars, managing quarter timelines and tracking academic, 
+                            career, and scholarship milestones. 
+                            </p>
+                            <p>
+                            Yr 2024-2025 | Yr 2025-2026 | Yr 2026-2027
+                            </p>
+                          </div>
+                        </ExperienceItem>
                         <ExperienceItem>
                           <ExperienceLogo>
                             <img src="uw.png" alt="UW Logo" />
                           </ExperienceLogo>
                           <div>
                             <ExperienceTitle>
-                              CSS Course Grader @ University of Washington
+                              CS Grader/TA @ University of Washington
                             </ExperienceTitle>
-                            <ExperienceDate>Winter 2026</ExperienceDate>
+                            <ExperienceDate>Jan 2026 - Jun 2026</ExperienceDate>
                             <p>
-                              Assisting faculty by evaluating student assignments and supporting course instruction in computing.
+                              Assisted faculty by evaluating student assignments and supporting 
+                              course instruction in computing.
                             </p>
+                            <p>Winter 2026 & Spring 2026</p>
                           </div>
                         </ExperienceItem>
                         <ExperienceItem>
@@ -857,18 +941,6 @@ const App: React.FC = () => {
                         </ExperienceItem>
                         <ExperienceItem>
                           <ExperienceLogo>
-                          <img src="wsos.png" alt="WSOS Lab Logo" />
-                          </ExperienceLogo>
-                          <div>
-                            <ExperienceTitle>STEM Scholar Lead @ <Links href="https://waopportunityscholarship.org/" target="_blank" rel="noopener noreferrer">WSOS</Links></ExperienceTitle>
-                            <ExperienceDate>Oct 2024 - Present</ExperienceDate>
-                            <p>
-                            Supporting STEM students in their academic and career development.
-                            </p>
-                          </div>
-                        </ExperienceItem>
-                        <ExperienceItem>
-                          <ExperienceLogo>
                             <img src="HOW.jpg" alt="House of Wisdom Logo" />
                           </ExperienceLogo>
                           <div>
@@ -877,7 +949,8 @@ const App: React.FC = () => {
                             </ExperienceTitle>
                             <ExperienceDate>May 2024 - Dec 2024</ExperienceDate>
                             <p>
-                              Tutored students in foundational and advanced mathematics through a nonprofit educational program.
+                              Tutored students in foundational and advanced mathematics through a 
+                              nonprofit educational program.
                             </p>
                           </div>
                         </ExperienceItem>
@@ -918,7 +991,7 @@ const App: React.FC = () => {
                         <SectionTitle>Achievements & Awards</SectionTitle>
                         <AchievementList>
                           <AchievementItem>
-                            <AchievementLogo src="Codepath.png" alt="Codepath Logo" />
+                            <AchievementLogo src="Codepath.png" alt="Codepath" />
                             <h3>Intermediate Technical Interview Prep Completion</h3>
                             <AchievementMeta>Codepath*org</AchievementMeta>
                             <AchievementIssued>Issued Aug 2025</AchievementIssued>
@@ -974,14 +1047,6 @@ const App: React.FC = () => {
                       </ContentWrapper>
                     </Section>
                   </>
-                } />
-                <Route path="/gallery" element={
-                  <Section>
-                    <ContentWrapper>
-                      <SectionTitle>Gallery</SectionTitle>
-                      <p>Coming soon: A collection of my work and projects in visual format.</p>
-                    </ContentWrapper>
-                  </Section>
                 } />
               </Routes>
             </MainContent>
